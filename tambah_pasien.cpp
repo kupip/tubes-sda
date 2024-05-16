@@ -5,7 +5,6 @@ void tambah_pasien(Pasien **first, Pasien **trav) {
     Pasien *temp_pasien = (Pasien*) malloc(sizeof(Pasien));
     temp_pasien->p_input=NULL;
     temp_pasien->p_prioritas=NULL;
-    // Pasien (*temp_pasien);
 
     printf("Masukkan nama pasien: ");
     scanf("%s", (*temp_pasien).nama);
@@ -18,7 +17,7 @@ void tambah_pasien(Pasien **first, Pasien **trav) {
     printf("Masukkan jenis kelamin (L/P): ");
     scanf("%c", &((*temp_pasien).jenis_kelamin));
     getchar();
-    // strupr(&((*temp_pasien).jenis_kelamin));
+    strupr(&((*temp_pasien).jenis_kelamin));
     while ((*temp_pasien).jenis_kelamin != 'L' && (*temp_pasien).jenis_kelamin != 'P' )
     {
         /* code */
