@@ -6,6 +6,5 @@ int main() {
     tambah_pasien(&first, &trav);
     tampilkan_daftar_pasien(first);
     tambah_pasien(&first, &trav);
-    // tambah_pasien(&first);
     tampilkan_daftar_pasien(first);
 }

@@ -3,12 +3,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #define TIDAK_BERUBAH true
 #define BERUBAH false
 #define ELASTIS true
 #define KERAS false
 
 typedef struct pasien *address_pasien;
+
+typedef struct bobot_krit
+{
+    /* data */
+    float bobot_td=5;
+    float bobot_nadi=5;
+    float bobot_hr=5;
+    float bobot_n_hr=4;
+    float bobot_tegang_nadi=3;
+    float bobot_elastis_nadi=3;
+    float bobot_napas=3;
+    float bobot_suhu=2;
+};
 
 typedef struct kriteria {
     int td_sistole;
@@ -38,7 +52,7 @@ void menu_tambah_pasien();
 int menu_utama();
 void banner();
 void hapus_pasien ();
-// float hitung_vektor;
+float hitung_vektor();
 void proses_pasien ();
 void tambah_pasien(Pasien **first, Pasien **trav);
 void tampilkan_daftar_pasien(Pasien *first);
