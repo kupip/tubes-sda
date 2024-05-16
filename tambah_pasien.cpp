@@ -55,8 +55,10 @@ void input_kriteria(Pasien *temp_pasien) {
     printf("Masukkan detak jantung: ");
     scanf("%d", &((*temp_pasien).krit.detak_jantung));
 
+    (*temp_pasien).krit.hr_x_nadi = (*temp_pasien).krit.detak_jantung - (*temp_pasien).krit.detak_nadi;
+    
     printf("Masukkan frekuensi pernapasan: ");
-    scanf("%d", &((*temp_pasien).krit.frekuensi_pernafasan));
+    scanf("%d", &((*temp_pasien).krit.frek_napas));
 
     printf("Masukkan suhu tubuh: ");
     scanf("%f", &((*temp_pasien).krit.suhu_badan));
@@ -76,7 +78,7 @@ void input_kriteria(Pasien *temp_pasien) {
         (*temp_pasien).krit.tegangan_nadi = BERUBAH;
     }
 
-    printf("Elastisitas pembuluh nadi\n1. Elastis\n2. Keras seperti kawat\nMasukkan angka: ");
+    printf("\nElastisitas pembuluh nadi\n1. Elastis\n2. Keras seperti kawat\nMasukkan angka: ");
     scanf("%d", &temp);
     // antisipasi input error
     while (temp != 1 && temp != 2)
