@@ -1,19 +1,26 @@
+#ifndef PASIEN_H
+#define PASIEN_H
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#ifndef PASIEN_H
-#define PASIEN_H
+#define TIDAK_BERUBAH true
+#define BERUBAH false
+#define ELASTIS true
+#define KERAS false
+
 typedef struct pasien *address_pasien;
 
-struct kriteria {
-    int tekanan_darah;
-    int detak_jantung;
+typedef struct kriteria {
+    int td_sistole;
+    int td_diastole;
     int detak_nadi;
-    int relasi_hr_tegangan_nadi;
-    int elastisitas_pembuluh_nadi;
+    int detak_jantung;
     int frekuensi_pernafasan;
-    int suhu_badan;
-};
+    float suhu_badan;
+    bool tegangan_nadi;
+    int hr_nadi;
+    bool elastisitas_pembuluh_nadi;
+} Kriteria;
 
 typedef struct pasien {
     char nama[50];
@@ -21,19 +28,19 @@ typedef struct pasien {
     char jenis_kelamin;
     char tanggal_kunjungan[20];
     float vektor_total;
-    kriteria Kriteria;
-    Pasien *pointer_pertama;
-    Pasien *pointer_kedua;
+    Kriteria krit;
+    address_pasien p_input;
+    address_pasien p_prioritas;
 } Pasien;
 
 void menu_hapus_pasien();
 void menu_tambah_pasien();
-void menu_utama();
+int menu_utama();
 void banner();
 void hapus_pasien ();
-float hitung_vektor;
+// float hitung_vektor;
 void proses_pasien ();
-void tambah_pasien();
-void tampilkan_daftar_pasien();
+void tambah_pasien(Pasien **first, Pasien **trav);
+void tampilkan_daftar_pasien(Pasien *first);
 void tampilkan_antrian();
 #endif
