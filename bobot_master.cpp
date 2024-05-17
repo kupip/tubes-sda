@@ -19,6 +19,7 @@ void set_bobot_master(bobot_krit *a_bobot)
 void ubah_bobot_master(bobot_krit *a_bobot)
 {   
     // Algoritma
+    system("cls");
     printf("Bobot Tekanan Darah\n");
     printf("1. Sangat Tinggi\n");
     printf("2. Tinggi\n");

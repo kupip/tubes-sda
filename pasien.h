@@ -13,7 +13,6 @@ typedef struct pasien *address_pasien;
 
 typedef struct bobot_krit
 {
-    /* data */
     float bobot_td=5;
     float bobot_nadi=5;
     float bobot_hr=5;
