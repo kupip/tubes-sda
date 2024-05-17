@@ -1,6 +1,5 @@
 #include "pasien.h"
 
-void set_krit(bobot_krit *a_bobot);
 float hitung_bobot_td(address_pasien first, bobot_krit sebuah_bobot);
 float hitung_bobot_nadi(address_pasien to_count, bobot_krit sebuah_bobot);
 float hitung_bobot_hr(address_pasien to_count, bobot_krit sebuah_bobot);
@@ -17,7 +16,7 @@ void hitung_vektor(address_pasien *first)
     bobot_krit sebuah_bobot;
     
     // Algoritma
-    set_krit(&sebuah_bobot);
+    set_bobot_master(&sebuah_bobot);
     (**first).vektor_total += hitung_bobot_td(*first, sebuah_bobot);
     (**first).vektor_total += hitung_bobot_nadi(*first, sebuah_bobot);
     (**first).vektor_total += hitung_bobot_hr(*first, sebuah_bobot);
@@ -120,20 +119,4 @@ float hitung_bobot_suhu(address_pasien to_decide, bobot_krit a_bobot)
     } else {
         return powf(3.0, -a_bobot.bobot_suhu);
     }
-}
-
-void set_krit(bobot_krit *a_bobot)
-{
-    float temp_divisor=0;
-    temp_divisor += (*a_bobot).bobot_elastis_nadi + (*a_bobot).bobot_hr + (*a_bobot).bobot_n_hr +
-                    (*a_bobot).bobot_nadi + (*a_bobot).bobot_napas + (*a_bobot).bobot_suhu +
-                    (*a_bobot).bobot_td + (*a_bobot).bobot_tegang_nadi;
-    (*a_bobot).bobot_elastis_nadi = (*a_bobot).bobot_elastis_nadi / temp_divisor;
-    (*a_bobot).bobot_hr = (*a_bobot).bobot_hr / temp_divisor;
-    (*a_bobot).bobot_n_hr = (*a_bobot).bobot_n_hr / temp_divisor;
-    (*a_bobot).bobot_nadi = (*a_bobot).bobot_nadi / temp_divisor;
-    (*a_bobot).bobot_napas = (*a_bobot).bobot_napas / temp_divisor;
-    (*a_bobot).bobot_suhu = (*a_bobot).bobot_suhu / temp_divisor;
-    (*a_bobot).bobot_td = (*a_bobot).bobot_td / temp_divisor;
-    (*a_bobot).bobot_tegang_nadi = (*a_bobot).bobot_tegang_nadi / temp_divisor;
 }

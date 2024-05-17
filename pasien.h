@@ -58,6 +58,9 @@ void banner();
 void hapus_pasien ();
 void hitung_vektor(address_pasien *first);
 void tambah_pasien(Head *first, Pasien **trav);
+
+void set_bobot_master(bobot_krit *a_bobot);
+
 void tampilkan_daftar_pasien(Pasien *first);
 void tampilkan_antrian(Pasien *first);
 #endif

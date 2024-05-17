@@ -16,7 +16,8 @@ int main() {
         printf("2. Tampil Daftar Pasien\n");
         printf("3. Tampil Antrean Pasien\n");
         printf("4. Hapus Pasien\n");
-        printf("5. Quit\n");
+        printf("5. Ubah Bobot Master\n");
+        printf("6. Quit\n");
         printf("Masukkan pilihan anda :");
         scanf("%d",&menu);
         getchar();
@@ -34,6 +35,8 @@ int main() {
             case 4:
                 break;
             case 5:
+                break;
+            case 6:
                 break;
         }
     }
