@@ -1,8 +1,8 @@
 #include "pasien.h"
 
-float hitung_bobot_td(address_pasien first, bobot_krit sebuah_bobot);
-float hitung_bobot_nadi(address_pasien to_count, bobot_krit sebuah_bobot);
-float hitung_bobot_hr(address_pasien to_count, bobot_krit sebuah_bobot);
+float hitung_bobot_td(address_pasien first, bobot_krit a_bobot);
+float hitung_bobot_nadi(address_pasien to_count, bobot_krit a_bobot);
+float hitung_bobot_hr(address_pasien to_count, bobot_krit a_bobot);
 float hitung_bobot_korelasi(address_pasien to_count, bobot_krit a_bobot);
 float hitung_bobot_tegang_nadi(address_pasien to_decide, bobot_krit a_bobot);
 float hitung_bobot_elastis_nadi(address_pasien to_decide, bobot_krit a_bobot);
@@ -27,45 +27,45 @@ void hitung_vektor(address_pasien *first)
     (**first).vektor_total += hitung_bobot_suhu(*first, sebuah_bobot);
 }
 
-float hitung_bobot_td(address_pasien to_count, bobot_krit sebuah_bobot)
+float hitung_bobot_td(address_pasien to_count, bobot_krit a_bobot)
 {
     // Algoritma
     if ((*to_count).krit.td_sistole < 90) {
-        return powf(3.0, -sebuah_bobot.bobot_td);
+        return powf(3.0, -a_bobot.bobot_td);
     } else if (((*to_count).krit.td_sistole >= 90 && (*to_count).krit.td_sistole <= 119) || (*to_count).krit.td_diastole < 80) {
-        return powf(5.0, -sebuah_bobot.bobot_td);
+        return powf(5.0, -a_bobot.bobot_td);
     } else if (((*to_count).krit.td_sistole >= 120 && (*to_count).krit.td_sistole <= 139) || ((*to_count).krit.td_diastole >= 80 && (*to_count).krit.td_diastole <= 89)) {
-        return powf(2.0, -sebuah_bobot.bobot_td);
+        return powf(2.0, -a_bobot.bobot_td);
     } else if (((*to_count).krit.td_sistole >= 140 && (*to_count).krit.td_sistole <= 159) || ((*to_count).krit.td_diastole >= 90 && (*to_count).krit.td_diastole <= 99)) {
-        return powf(3.0, -sebuah_bobot.bobot_td);
+        return powf(3.0, -a_bobot.bobot_td);
     } else if (((*to_count).krit.td_sistole >= 160) || ((*to_count).krit.td_diastole >= 100)) {
-        return powf(4.0, -sebuah_bobot.bobot_td);
+        return powf(4.0, -a_bobot.bobot_td);
     }
     return 0;
 }
 
-float hitung_bobot_nadi(address_pasien to_count, bobot_krit sebuah_bobot)
+float hitung_bobot_nadi(address_pasien to_count, bobot_krit a_bobot)
 {
     // Algoritma
     if ((*to_count).krit.detak_nadi < 60) {
-        return powf(2.0, -sebuah_bobot.bobot_nadi);
+        return powf(2.0, -a_bobot.bobot_nadi);
     } else if (((*to_count).krit.detak_nadi >= 60 && (*to_count).krit.detak_nadi <= 100)) {
-        return powf(3.0, -sebuah_bobot.bobot_nadi);
+        return powf(3.0, -a_bobot.bobot_nadi);
     } else if ((*to_count).krit.detak_nadi > 100) {
-        return powf(2.0, -sebuah_bobot.bobot_nadi);
+        return powf(2.0, -a_bobot.bobot_nadi);
     }
     return 0;
 }
 
-float hitung_bobot_hr(address_pasien to_count, bobot_krit sebuah_bobot)
+float hitung_bobot_hr(address_pasien to_count, bobot_krit a_bobot)
 {
     // Algoritma
     if ((*to_count).krit.detak_jantung < 60) {
-        return powf(2.0, -sebuah_bobot.bobot_hr);
+        return powf(2.0, -a_bobot.bobot_hr);
     } else if (((*to_count).krit.detak_jantung >= 60 && (*to_count).krit.detak_jantung <= 100)) {
-        return powf(3.0, -sebuah_bobot.bobot_hr);
+        return powf(3.0, -a_bobot.bobot_hr);
     } else if ((*to_count).krit.detak_jantung > 100) {
-        return powf(2.0, -sebuah_bobot.bobot_hr);
+        return powf(2.0, -a_bobot.bobot_hr);
     }
     return 0;
 }

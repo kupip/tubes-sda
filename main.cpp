@@ -18,7 +18,7 @@ int main() {
         printf("4. Hapus Pasien\n");
         printf("5. Ubah Bobot Master\n");
         printf("6. Quit\n");
-        printf("Masukkan pilihan anda :");
+        printf("Masukkan pilihan anda: ");
         scanf("%d",&menu);
         getchar();
 
