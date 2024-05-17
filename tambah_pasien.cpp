@@ -3,15 +3,17 @@ void input_kriteria(Pasien *temp_pasien);
 
 void tambah_pasien(Head *first, Pasien **trav) {
     Pasien *temp_pasien = (Pasien*) malloc(sizeof(Pasien));
+    static int id=0;
+
     temp_pasien->p_input=NULL;
     temp_pasien->p_prioritas=NULL;
-
+    (*temp_pasien).id = ++id;
     printf("Masukkan nama pasien: ");
-    scanf("%s", (*temp_pasien).nama);
+    scanf("%[^\n]s", (*temp_pasien).nama);
     getchar();
 
     printf("Masukkan alamat: ");
-    scanf("%s", (*temp_pasien).alamat);
+    scanf("%[^\n]s", (*temp_pasien).alamat);
     getchar();
 
     printf("Masukkan jenis kelamin (L/P): ");

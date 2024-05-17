@@ -19,6 +19,7 @@ int main() {
         printf("5. Quit\n");
         printf("Masukkan pilihan anda :");
         scanf("%d",&menu);
+        getchar();
 
         switch (menu) {
             case 1:

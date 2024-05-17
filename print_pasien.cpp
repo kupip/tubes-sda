@@ -2,12 +2,13 @@
 
 void tampilkan_daftar_pasien(Pasien *first) {
     address_pasien trav=first;
-    int jmlh_pasien = 0;
+
+    system("cls");
+    printf("DAFTAR DATA PASIEN\n");
     while (trav != NULL)
-    {   
-        jmlh_pasien++;
+    {
         /* code */
-        printf("data pasien ke-%d\n",jmlh_pasien);
+        printf("data pasien ke-%d\n",(*trav).id);
         printf("Nama: %s \n", (*trav).nama);
         printf("Alamat: %s\n", (*trav).alamat);
         printf("Jenis kelamin: %c\n", (*trav).jenis_kelamin);
@@ -31,4 +32,6 @@ void tampilkan_daftar_pasien(Pasien *first) {
         trav = (*trav).p_input;
     }
     printf("\n");
+    printf("Tekan apapun untuk kembali.\n");
+    getchar();
 }

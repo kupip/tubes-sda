@@ -37,6 +37,7 @@ typedef struct kriteria {
 } Kriteria;
 
 typedef struct pasien {
+    int id;
     char nama[50];
     char alamat[50];
     char jenis_kelamin;
