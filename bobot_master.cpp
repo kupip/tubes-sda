@@ -17,9 +17,8 @@ void set_bobot_master(bobot_krit *a_bobot)
 }
 
 void ubah_bobot_master(bobot_krit *a_bobot)
-{
-    short inp;
-    
+{   
+    // Algoritma
     printf("Bobot Tekanan Darah\n");
     printf("1. Sangat Tinggi\n");
     printf("2. Tinggi\n");
@@ -27,7 +26,76 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("4. Rendah\n");
     printf("5. Sangat Rendah\n");
     printf("Masukkan angka: ");
-    scanf("%d", &inp);
+    scanf("%d", &((*a_bobot).bobot_td));
+    (*a_bobot).bobot_td -= 6;
 
-    (*a_bobot).bobot_td = inp%inp+
+    printf("Bobot Detak Nadi\n");
+    printf("1. Sangat Tinggi\n");
+    printf("2. Tinggi\n");
+    printf("3. Cukup\n");
+    printf("4. Rendah\n");
+    printf("5. Sangat Rendah\n");
+    printf("Masukkan angka: ");
+    scanf("%d", &((*a_bobot).bobot_nadi));
+    (*a_bobot).bobot_nadi -= 6;
+
+    printf("Bobot Detak Jantung\n");
+    printf("1. Sangat Tinggi\n");
+    printf("2. Tinggi\n");
+    printf("3. Cukup\n");
+    printf("4. Rendah\n");
+    printf("5. Sangat Rendah\n");
+    printf("Masukkan angka: ");
+    scanf("%d", &((*a_bobot).bobot_hr));
+    (*a_bobot).bobot_hr -= 6;
+
+    printf("Bobot Frekuensi Napas\n");
+    printf("1. Sangat Tinggi\n");
+    printf("2. Tinggi\n");
+    printf("3. Cukup\n");
+    printf("4. Rendah\n");
+    printf("5. Sangat Rendah\n");
+    printf("Masukkan angka: ");
+    scanf("%d", &((*a_bobot).bobot_napas));
+    (*a_bobot).bobot_napas -= 6;
+
+    printf("Bobot Suhu Badan\n");
+    printf("1. Sangat Tinggi\n");
+    printf("2. Tinggi\n");
+    printf("3. Cukup\n");
+    printf("4. Rendah\n");
+    printf("5. Sangat Rendah\n");
+    printf("Masukkan angka: ");
+    scanf("%d", &((*a_bobot).bobot_suhu));
+    (*a_bobot).bobot_suhu -= 6;
+
+    printf("Bobot Tegangan Nadi\n");
+    printf("1. Sangat Tinggi\n");
+    printf("2. Tinggi\n");
+    printf("3. Cukup\n");
+    printf("4. Rendah\n");
+    printf("5. Sangat Rendah\n");
+    printf("Masukkan angka: ");
+    scanf("%d", &((*a_bobot).bobot_tegang_nadi));
+    (*a_bobot).bobot_tegang_nadi -= 6;
+
+    printf("Bobot Korelasi Detak Nadi dan Jantung \n");
+    printf("1. Sangat Tinggi\n");
+    printf("2. Tinggi\n");
+    printf("3. Cukup\n");
+    printf("4. Rendah\n");
+    printf("5. Sangat Rendah\n");
+    printf("Masukkan angka: ");
+    scanf("%d", &((*a_bobot).bobot_n_hr));
+    (*a_bobot).bobot_n_hr -= 6;
+
+    printf("Bobot Elastisitas Nadi\n");
+    printf("1. Sangat Tinggi\n");
+    printf("2. Tinggi\n");
+    printf("3. Cukup\n");
+    printf("4. Rendah\n");
+    printf("5. Sangat Rendah\n");
+    printf("Masukkan angka: ");
+    scanf("%d", &((*a_bobot).bobot_elastis_nadi));
+    (*a_bobot).bobot_elastis_nadi -= 6;
 }
