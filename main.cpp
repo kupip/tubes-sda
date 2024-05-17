@@ -1,5 +1,4 @@
 #include "pasien.h"
-void set_krit(bobot_krit *a_bobot);
 
 int main() {
     // KAMUS DATA
@@ -9,7 +8,7 @@ int main() {
     address_pasien trav=NULL;
     int menu;
 
-    // ALGO
+    // Algoritma
     while (menu != 5){
         system("cls");
         banner();
