@@ -40,6 +40,10 @@ int main() {
                 break;
             case 6:
                 break;
+            default:
+                printf("Masukkan input yang valid");
+                Sleep(3000);
+                break;
         }
     }
 }

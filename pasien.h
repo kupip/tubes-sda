@@ -1,9 +1,10 @@
 #ifndef PASIEN_H
 #define PASIEN_H
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
+#include <windows.h>
 #define TIDAK_BERUBAH true
 #define BERUBAH false
 #define ELASTIS true
