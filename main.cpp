@@ -12,6 +12,7 @@ int main() {
     // ALGO
     while (menu != 5){
         system("cls");
+        banner();
         printf("1. Tambah Pasien\n");
         printf("2. Tampil Daftar Pasien\n");
         printf("3. Tampil Antrean Pasien\n");
