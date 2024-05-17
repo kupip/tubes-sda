@@ -6,10 +6,11 @@ int main() {
     a_head.inp=NULL;
     a_head.prio=NULL;
     address_pasien trav=NULL;
+    bobot_krit sebuah_bobot;
     int menu;
 
     // Algoritma
-    while (menu != 5){
+    while (menu != 6){
         system("cls");
         banner();
         printf("1. Tambah Pasien\n");
@@ -24,7 +25,7 @@ int main() {
 
         switch (menu) {
             case 1:
-                tambah_pasien(&(a_head), &trav);
+                tambah_pasien(&(a_head), &trav, sebuah_bobot);
                 break;
             case 2:
                 tampilkan_daftar_pasien(a_head.inp);
@@ -35,6 +36,7 @@ int main() {
             case 4:
                 break;
             case 5:
+                ubah_bobot_master(&sebuah_bobot);
                 break;
             case 6:
                 break;

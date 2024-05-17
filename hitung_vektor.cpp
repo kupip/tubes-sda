@@ -9,22 +9,21 @@ float hitung_bobot_elastis_nadi(address_pasien to_decide, bobot_krit a_bobot);
 float hitung_bobot_napas(address_pasien to_decide, bobot_krit a_bobot);
 float hitung_bobot_suhu(address_pasien to_decide, bobot_krit a_bobot);
 
-void hitung_vektor(address_pasien *first)
+void hitung_vektor(address_pasien *first, bobot_krit a_bobot)
 {
     // Kamus Data
     (**first).vektor_total=0;
-    bobot_krit sebuah_bobot;
     
     // Algoritma
-    set_bobot_master(&sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_td(*first, sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_nadi(*first, sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_hr(*first, sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_korelasi(*first, sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_tegang_nadi(*first, sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_elastis_nadi(*first, sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_napas(*first, sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_suhu(*first, sebuah_bobot);
+    set_bobot_master(&a_bobot);
+    (**first).vektor_total += hitung_bobot_td(*first, a_bobot);
+    (**first).vektor_total += hitung_bobot_nadi(*first, a_bobot);
+    (**first).vektor_total += hitung_bobot_hr(*first, a_bobot);
+    (**first).vektor_total += hitung_bobot_korelasi(*first, a_bobot);
+    (**first).vektor_total += hitung_bobot_tegang_nadi(*first, a_bobot);
+    (**first).vektor_total += hitung_bobot_elastis_nadi(*first, a_bobot);
+    (**first).vektor_total += hitung_bobot_napas(*first, a_bobot);
+    (**first).vektor_total += hitung_bobot_suhu(*first, a_bobot);
 }
 
 float hitung_bobot_td(address_pasien to_count, bobot_krit a_bobot)

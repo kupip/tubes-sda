@@ -1,7 +1,7 @@
 #include "pasien.h"
 void input_kriteria(Pasien *temp_pasien);
 
-void tambah_pasien(Head *first, Pasien **trav) {
+void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot) {
     Pasien *temp_pasien = (Pasien*) malloc(sizeof(Pasien));
     static int id=0;
 
@@ -28,7 +28,7 @@ void tambah_pasien(Head *first, Pasien **trav) {
         getchar();
     }
     input_kriteria(&(*temp_pasien));
-    hitung_vektor(&temp_pasien);
+    hitung_vektor(&temp_pasien, a_bobot);
 
     // penyambungan berdasarkan urutan inpput
     if ((*first).inp == NULL) {
