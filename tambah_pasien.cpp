@@ -1,7 +1,7 @@
 #include "pasien.h"
 void input_kriteria(Pasien *temp_pasien);
 
-void tambah_pasien(Pasien **first, Pasien **trav) {
+void tambah_pasien(Head *first, Pasien **trav) {
     Pasien *temp_pasien = (Pasien*) malloc(sizeof(Pasien));
     temp_pasien->p_input=NULL;
     temp_pasien->p_prioritas=NULL;
@@ -26,17 +26,36 @@ void tambah_pasien(Pasien **first, Pasien **trav) {
         getchar();
     }
     input_kriteria(&(*temp_pasien));
+    hitung_vektor(&temp_pasien);
 
-    if ((*first) == NULL) {
-        (*first) = temp_pasien;
+    // penyambungan berdasarkan urutan inpput
+    if ((*first).inp == NULL) {
+        (*first).inp = temp_pasien;
     } else {
-        *trav = (*first);
+        *trav = (*first).inp;
         while ((*trav)->p_input != NULL)
         {
             /* code */
             (*trav) = (*trav)->p_input;
         }
         (*trav)->p_input = temp_pasien;
+    }
+
+    // penyambungan berdasarkan prioritas
+    if ((*first).prio == NULL) {
+        (*first).prio = temp_pasien;
+    } else {
+        if ((*first).prio->vektor_total < (*temp_pasien).vektor_total) {
+            (*temp_pasien).p_prioritas = (*first).prio;
+            (*first).prio = temp_pasien;
+        } else {
+            *trav = (*first).prio;
+            while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total) {
+                (*trav) = (**trav).p_prioritas;
+            }
+            (*temp_pasien).p_prioritas = (**trav).p_prioritas;
+            (**trav).p_prioritas = temp_pasien;
+        }
     }
 }
 

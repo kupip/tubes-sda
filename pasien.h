@@ -40,7 +40,6 @@ typedef struct pasien {
     char nama[50];
     char alamat[50];
     char jenis_kelamin;
-    char tanggal_kunjungan[20];
     float vektor_total;
     Kriteria krit;
     address_pasien p_input;
@@ -52,14 +51,12 @@ typedef struct head_p {
     address_pasien prio;
 } Head;
 
-void menu_hapus_pasien();
-void menu_tambah_pasien();
+
 int menu_utama();
 void banner();
 void hapus_pasien ();
 void hitung_vektor(address_pasien *first);
-void proses_pasien ();
-void tambah_pasien(Pasien **first, Pasien **trav);
+void tambah_pasien(Head *first, Pasien **trav);
 void tampilkan_daftar_pasien(Pasien *first);
-void tampilkan_antrian();
+void tampilkan_antrian(Pasien *first);
 #endif

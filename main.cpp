@@ -7,12 +7,33 @@ int main() {
     a_head.inp=NULL;
     a_head.prio=NULL;
     address_pasien trav=NULL;
-    bobot_krit a_bobot;
-    set_krit(&a_bobot);
+    int menu;
 
     // ALGO
-    // printf("%f\n", a_bobot.bobot_td);
-    tambah_pasien(&(a_head.inp), &trav);
-    hitung_vektor(&(a_head.inp));
-    printf("%.5f\n", a_head.inp->vektor_total);
+    while (menu != 5){
+        system("cls");
+        printf("1. Tambah Pasien\n");
+        printf("2. Tampil Daftar Pasien\n");
+        printf("3. Tampil Antrean Pasien\n");
+        printf("4. Hapus Pasien\n");
+        printf("5. Quit\n");
+        printf("Masukkan pilihan anda :");
+        scanf("%d",&menu);
+
+        switch (menu) {
+            case 1:
+                tambah_pasien(&(a_head), &trav);
+                break;
+            case 2:
+                tampilkan_daftar_pasien(a_head.inp);
+                break;
+            case 3:
+                tampilkan_antrian(a_head.prio);
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+        }
+    }
 }
