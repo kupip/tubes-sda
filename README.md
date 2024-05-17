@@ -8,3 +8,8 @@ Fitur-fitur yang terdapat pada aplikasi ini adalah sebagai berikut:
 3. Menampilkan daftar pasien;
 4. Menghitung nilai prioritas setiap pasien; dan
 5. Menampilkan antrean pasien.
+
+## Tim
+Tim pembuat aplikasi ini terdiri atas:
+1. Muhammad Rafif Genadratama (231524016); dan
+2. Nadia Rachma Yuninda (231524017).
