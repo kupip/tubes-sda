@@ -19,8 +19,8 @@ void hitung_vektor(address_pasien *first)
     // Algoritma
     set_krit(&sebuah_bobot);
     (**first).vektor_total += hitung_bobot_td(*first, sebuah_bobot);
-    (**first).vektor_total += hitung_bobot_nadi(*first, sebuah_bobot); // penentuan bobot detak nadi
-    (**first).vektor_total += hitung_bobot_hr(*first, sebuah_bobot); // penentuan bobot detak jantung
+    (**first).vektor_total += hitung_bobot_nadi(*first, sebuah_bobot);
+    (**first).vektor_total += hitung_bobot_hr(*first, sebuah_bobot);
     (**first).vektor_total += hitung_bobot_korelasi(*first, sebuah_bobot);
     (**first).vektor_total += hitung_bobot_tegang_nadi(*first, sebuah_bobot);
     (**first).vektor_total += hitung_bobot_elastis_nadi(*first, sebuah_bobot);

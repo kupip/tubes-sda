@@ -1,6 +1,7 @@
 #include "pasien.h"
 
-void tampilkan_antrian(Pasien *first) {
+void tampilkan_antrian(Pasien *first)
+{
     address_pasien trav=first;
     int jmlh_pasien = 0;
 

@@ -1,6 +1,7 @@
 #include "pasien.h"
 
-void tampilkan_daftar_pasien(Pasien *first) {
+void tampilkan_daftar_pasien(Pasien *first)
+{
     address_pasien trav=first;
 
     system("cls");
