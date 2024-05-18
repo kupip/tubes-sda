@@ -30,7 +30,7 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot) {
     input_kriteria(&(*temp_pasien));
     hitung_vektor(&temp_pasien, a_bobot);
 
-    // penyambungan berdasarkan urutan inpput
+    // penyambungan berdasarkan urutan input
     if ((*first).inp == NULL) {
         (*first).inp = temp_pasien;
     } else {

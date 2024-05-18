@@ -17,59 +17,54 @@ void hapus_pasien (Head *first){
             printf("DAFTAR DATA PASIEN\n");
             while (trav != NULL)
             {
-            /* code */
-            i++;
-            printf("data pasien ke-%d\n",i);
-            printf("Nama: %s \n", (*trav).nama);
-            
-            trav = (*trav).p_input;
+                /* code */
+                i++;
+                printf("data pasien ke-%d\n",i);
+                printf("Nama: %s \n", (*trav).nama);
+                
+                trav = (*trav).p_input;
             }
 
-            // menanyakan urutan data pasien yang ingin di hapus
+            // menanyakan urutan data pasien yang ingin dihapus
             int count;
             // urutan pasien dalam daftar
-            printf("Masukkan angka : ");
+            printf("Masukkan angka: ");
             scanf("%d", &count);
 
             // hapus sesuai daftar input
-            address_pasien q = NULL;
+            address_pasien prev_del_inp = NULL;
  	        i=0;
-            while (pdel != NULL &&  i!= (count-1))
-                {
-                    q = pdel;
-                    pdel = pdel->p_input;
-                    i++;
-                }
+            while (pdel != NULL &&  i != (count-1)) {
+                prev_del_inp = pdel;
+                pdel = pdel->p_input;
+                i++;
+            }
 
             // countnya ga sesuai
-            if (pdel == NULL)
-            {
-                printf("\ntidak terdapat data pada angka yang anda masukkan ");
+            if (pdel == NULL) {
+                printf("\nTidak terdapat data pada angka yang anda masukkan.");
             }
 
-
-            if (q == NULL)
-            {
+            // penyambungan pointer inp
+            if (prev_del_inp == NULL) { // node yang dihapus adalah node pertama
                 (*first).inp = pdel->p_input;
             } else {
-                q->p_input = pdel->p_input;
+                prev_del_inp->p_input = pdel->p_input;
+            }
+            
+            // penyambungan pointer prio
+            address_pasien trav2 = first->prio;
+            address_pasien prev_del_prio = NULL;
+            while (trav2 != pdel) {
+                prev_del_prio = trav2;
+                trav2 = trav2->p_prioritas;
             }
 
-            
-            // hapus sesuai daftar sesuai prio
-            address_pasien trav2 = first->prio;
-            address_pasien curr = NULL;
-            while (trav2 != pdel)
-                {
-                    curr = trav2;
-                    trav2 = trav2->p_prioritas;
-                }
-
-            if (curr == NULL) {
+            if (prev_del_prio == NULL) { // node yang dihapus adalah node pertama
                 (*first).prio = trav2->p_prioritas;
-                } else {
-                curr->p_prioritas = trav2->p_prioritas;
-                }
+            } else {
+                prev_del_prio->p_prioritas = trav2->p_prioritas;
+            }
                
             pdel->p_prioritas = NULL;
             pdel->p_input= NULL;
