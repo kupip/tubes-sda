@@ -3,6 +3,7 @@
 void tampilkan_daftar_pasien(Pasien *first)
 {
     address_pasien trav=first;
+    int jml_pasien=0;
 
     system("cls");
     if (first == NULL){
@@ -12,7 +13,8 @@ void tampilkan_daftar_pasien(Pasien *first)
         while (trav != NULL)
         {
             /* code */
-            printf("data pasien ke-%d\n",(*trav).id);
+            jml_pasien++;
+            printf("data pasien ke-%d\n", jml_pasien);
             printf("Nama: %s \n", (*trav).nama);
             printf("Alamat: %s\n", (*trav).alamat);
             printf("Jenis kelamin: %c\n", (*trav).jenis_kelamin);

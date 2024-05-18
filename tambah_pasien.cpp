@@ -20,6 +20,7 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot) {
     scanf("%c", &((*temp_pasien).jenis_kelamin));
     getchar();
     strupr(&((*temp_pasien).jenis_kelamin));
+    // antisipasi input error
     while ((*temp_pasien).jenis_kelamin != 'L' && (*temp_pasien).jenis_kelamin != 'P' )
     {
         /* code */
