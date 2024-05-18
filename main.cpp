@@ -34,6 +34,7 @@ int main() {
                 tampilkan_antrian(a_head.prio);
                 break;
             case 4:
+                hapus_pasien (&(a_head));
                 break;
             case 5:
                 ubah_bobot_master(&sebuah_bobot);

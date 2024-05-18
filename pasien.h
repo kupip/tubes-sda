@@ -55,7 +55,7 @@ typedef struct head_p {
 
 int menu_utama();
 void banner();
-void hapus_pasien ();
+
 void hitung_vektor(address_pasien *first, bobot_krit a_bobot);
 void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot);
 
@@ -64,4 +64,6 @@ void ubah_bobot_master(bobot_krit *a_bobot);
 
 void tampilkan_daftar_pasien(Pasien *first);
 void tampilkan_antrian(Pasien *first);
+
+void hapus_pasien (Head *first);
 #endif
