@@ -66,4 +66,6 @@ void tampilkan_daftar_pasien(Pasien *first);
 void tampilkan_antrian(Pasien *first);
 
 void hapus_pasien (Head *first);
+void hapus_data_pasien(Head *first);
+void hapus_antrean_pasien(address_pasien *first);
 #endif
