@@ -7,16 +7,21 @@ void hapus_pasien (Head *first){
         printf("Belum terdapat data pasien");
     } else {
         int menu;
-        printf("Menu hapus");
-        printf("1. Hapus data pasien dari daftar");
-        printf("2. Hapus data pasien dari antrean");
+        printf("Menu hapus\n");
+        printf("1. Hapus data pasien dari daftar\n");
+        printf("2. Hapus data pasien dari antrean\n");
+        printf("Masukkan angka: ");
         scanf("%d", &menu);
         if (menu == 1){
             hapus_data_pasien(&(*first));
         } else if (menu == 2){
             hapus_antrean_pasien(&((*first).prio));
         } else {
-            printf("Masukkan angka yang benar");
+            printf("Masukkan angka yang benar\n");
+            while (menu != 1 && menu != 2) {
+                printf("Masukkan angka: ");
+                scanf("%d", &menu);
+            }
         }
     }
 
@@ -41,7 +46,7 @@ void hapus_data_pasien(Head *first){
                 /* code */
                 i++;
                 printf("data pasien ke-%d\n",i);
-                printf("Nama: %s \n", (*trav).nama);
+                printf("Nama: %s \n\n", (*trav).nama);
                 
                 trav = (*trav).p_input;
             }
