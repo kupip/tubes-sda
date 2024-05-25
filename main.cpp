@@ -1,5 +1,4 @@
 #include "pasien.h"
-
 int main() {
     // KAMUS DATA
     Head a_head;
@@ -13,12 +12,12 @@ int main() {
     while (menu != 6){
         system("cls");
         banner();
-        printf("1. Tambah Pasien\n");
-        printf("2. Tampil Daftar Pasien\n");
-        printf("3. Tampil Antrean Pasien\n");
-        printf("4. Hapus Pasien\n");
-        printf("5. Ubah Bobot Master\n");
-        printf("6. Quit\n");
+        printf("1. Tambah Pasien");
+        printf("2. Tampil Daftar Pasien");
+        printf("3. Tampil Antrean Pasien");
+        printf("4. Hapus Pasien");
+        printf("5. Ubah Bobot Master");
+        printf("6. Quit");
         printf("Masukkan pilihan anda: ");
         scanf("%d",&menu);
         getchar();

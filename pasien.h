@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+#include <conio.h>
 #define TIDAK_BERUBAH true
 #define BERUBAH false
 #define ELASTIS true
@@ -68,4 +69,5 @@ void tampilkan_antrian(Pasien *first);
 void hapus_pasien (Head *first);
 void hapus_data_pasien(Head *first);
 void hapus_antrean_pasien(address_pasien *first);
+void kursor(SHORT x, SHORT y);
 #endif
