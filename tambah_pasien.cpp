@@ -5,8 +5,6 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot) {
     Pasien *temp_pasien = (Pasien*) malloc(sizeof(Pasien));
     static int id=0;
 
-    temp_pasien->p_input=NULL;
-    temp_pasien->p_prioritas=NULL;
     (*temp_pasien).id = ++id;
     printf("Masukkan nama pasien: ");
     scanf("%[^\n]s", (*temp_pasien).nama);
@@ -30,6 +28,9 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot) {
     }
     input_kriteria(&(*temp_pasien));
     hitung_vektor(&temp_pasien, a_bobot);
+
+    temp_pasien->p_input=NULL;
+    temp_pasien->p_prioritas=NULL;
 
     // penyambungan berdasarkan urutan input
     if ((*first).inp == NULL) {

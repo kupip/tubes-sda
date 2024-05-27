@@ -70,4 +70,7 @@ void hapus_pasien (Head *first);
 void hapus_data_pasien(Head *first);
 void hapus_antrean_pasien(address_pasien *first);
 void kursor(SHORT x, SHORT y);
+
+void baca_file(Head *a_head);
+void simpan_file(address_pasien trav);
 #endif
