@@ -44,8 +44,8 @@ void baca_file(Head *a_head) {
                     fscanf(baca, "%d,%d,%d,%d,%d,%f,%c,%d,%c\n", &(trav->p_input->krit.td_sistole), &(trav->p_input->krit.td_diastole),
                     &(trav->p_input->krit.detak_nadi), &(trav->p_input->krit.detak_jantung), &(trav->p_input->krit.frek_napas),
                     &(trav->p_input->krit.suhu_badan), &(temp_tegang), &(trav->p_input->krit.hr_x_nadi), &(temp_elastis));
-                    (*trav).krit.tegangan_nadi = (temp_tegang == 't'?true:false);
-                    (*trav).krit.elastisitas_pembuluh_nadi = (temp_elastis == 't' ? true:false);
+                    (*trav).p_input->krit.tegangan_nadi = (temp_tegang == 't'?true:false);
+                    (*trav).p_input->krit.elastisitas_pembuluh_nadi = (temp_elastis == 't' ? true:false);
                     trav = trav->p_input;
                     trav->p_input = (address_pasien) malloc(sizeof(Pasien));
                     // trav->p_input = NULL;

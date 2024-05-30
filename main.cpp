@@ -9,7 +9,7 @@ int main() {
     int menu;
 
     // Algoritma
-    baca_file(&a_head);
+   baca_file(&a_head);
     while (menu != 8){
         system("cls");
         banner();
