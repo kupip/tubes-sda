@@ -10,7 +10,7 @@ int main() {
 
     // Algoritma
     baca_file(&a_head);
-    while (menu != 7){
+    while (menu != 8){
         system("cls");
         banner();
         printf("1. Tambah Pasien\n");
@@ -42,10 +42,10 @@ int main() {
                 ubah_bobot_master(&sebuah_bobot);
                 break;
             case 6:
-                // panduan penggunaan
+                tampil_panduan();
                 break;
             case 7:
-                // kredit
+                tampil_kredit();
                 break;
             case 8:
                 simpan_file(a_head.inp);

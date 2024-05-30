@@ -12,7 +12,7 @@ void tampil_panduan() {
 
     printf("3. Tampil Antrean Pasien\n");
     printf("\t- Pilihan ini akan menampilkan daftar antrean pasien yang diurutkan berdasarkan prioritas penanganan.\n");
-    printf("\t- Urutan antrean ditentukan dengan menghitung nilai normalisasi total vektor untuk setiap pasien menggunakan metode WP, yang mempertimbangkan bobot kriteria dan nilai input kriteria dari masing-masing pasien.");
+    printf("\t- Urutan antrean ditentukan dengan menghitung nilai normalisasi total vektor untuk setiap pasien menggunakan metode WP, yang mempertimbangkan bobot kriteria dan nilai input kriteria dari masing-masing pasien.\n");
     printf("\t- Pasien dengan nilai normalisasi total vektor tertinggi akan mendapat prioritas penanganan pertama, dan seterusnya secara descending.\n\n");
 
     printf("4. Hapus Pasien\n");
