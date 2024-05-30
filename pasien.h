@@ -69,6 +69,7 @@ void tampilkan_antrian(Pasien *first);
 void hapus_pasien (Head *first);
 void hapus_data_pasien(Head *first);
 void hapus_antrean_pasien(address_pasien *first);
+void hapus_data_semua_pasien(Head *first);
 void kursor(SHORT x, SHORT y);
 
 void baca_file(Head *a_head);

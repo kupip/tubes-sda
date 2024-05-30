@@ -10,18 +10,22 @@ void hapus_pasien (Head *first){
         printf("Menu hapus\n");
         printf("1. Hapus data pasien dari daftar\n");
         printf("2. Hapus data pasien dari antrean\n");
+        printf("3. Hapus data semua pasien\n");
         printf("Masukkan angka: ");
         scanf("%d", &menu);
-        if (menu == 1){
+        switch (menu)
+        {
+        case 1:
+            /* code */
             hapus_data_pasien(&(*first));
-        } else if (menu == 2){
+            break;
+        case 2:
             hapus_antrean_pasien(&((*first).prio));
-        } else {
-            printf("Masukkan angka yang benar\n");
-            while (menu != 1 && menu != 2) {
-                printf("Masukkan angka: ");
-                scanf("%d", &menu);
-            }
+            break;
+        case 3:
+            hapus_data_semua_pasien(&(*first));
+        default:
+            break;
         }
     }
 
@@ -99,7 +103,7 @@ void hapus_data_pasien(Head *first){
         printf("data berhasil di hapus\n");
 }
 
-void hapus_antrean_pasien(address_pasien *first){
+void hapus_antrean_pasien(address_pasien *first) {
     if ((*first)->p_prioritas== NULL){
         (*first) = NULL;
     } else {
@@ -115,5 +119,16 @@ void hapus_antrean_pasien(address_pasien *first){
         /* code */
         printf("%d. %s dengan nilai vektor %.4f\n", jmlh_pasien, (*trav).nama, (*trav).vektor_total);
         trav = (*trav).p_prioritas;
+    }
+}
+
+void hapus_data_semua_pasien(Head *first) {
+	address_pasien pdel = (*first).prio;
+	
+    (*first).inp = NULL;
+	while ((*first).prio != NULL){
+        (*first).prio = (*first).prio->p_input;
+        free(pdel);
+        pdel = (*first).prio;
     }
 }
