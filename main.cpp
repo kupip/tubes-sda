@@ -1,6 +1,6 @@
 #include "pasien.h"
 int main() {
-    // KAMUS DATA
+    // Kamus Data
     Head a_head;
     a_head.inp=NULL;
     a_head.prio=NULL;
@@ -10,7 +10,7 @@ int main() {
 
     // Algoritma
     baca_file(&a_head);
-    while (menu != 6){
+    while (menu != 7){
         system("cls");
         banner();
         printf("1. Tambah Pasien\n");
@@ -18,7 +18,9 @@ int main() {
         printf("3. Tampil Antrean Pasien\n");
         printf("4. Hapus Pasien\n");
         printf("5. Ubah Bobot Master\n");
-        printf("6. Quit\n");
+        printf("6. Panduan\n");
+        printf("7. Kredit\n");
+        printf("8. Quit\n");
         printf("Masukkan pilihan anda: ");
         scanf("%d",&menu);
         getchar();
@@ -40,6 +42,12 @@ int main() {
                 ubah_bobot_master(&sebuah_bobot);
                 break;
             case 6:
+                // panduan penggunaan
+                break;
+            case 7:
+                // kredit
+                break;
+            case 8:
                 simpan_file(a_head.inp);
                 break;
             default:

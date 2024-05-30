@@ -73,4 +73,7 @@ void kursor(SHORT x, SHORT y);
 
 void baca_file(Head *a_head);
 void simpan_file(address_pasien trav);
+
+void tampil_panduan();
+void tampil_kredit();
 #endif
