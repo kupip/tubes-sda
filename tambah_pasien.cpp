@@ -113,50 +113,43 @@ void input_kriteria(Pasien *temp_pasien)
 void sambung_prio(address_pasien *prio,  address_pasien* trav, address_pasien temp_pasien)
 {
     // Kamus Data
-    // time_t rawtime;
-    // tm* local_time;
+    time_t rawtime;
+    tm* local_time;
 
     // Algoritma
-    // time(&rawtime);
-    // local_time = localtime(&rawtime);
-    // if ((*prio) == NULL) {
-    //     *prio = temp_pasien;
-    //     *next_prio = temp_pasien;;
-    // } else {
-    //     if (local_time->tm_hour == main_time->tm_hour) {
-    //         if ((*prio) != (*next_prio)->p_prioritas) { // ngecek apakah head prio sekarang == next_first_prio
-    //             if ((*next_prio)->p_prioritas->vektor_total < (*temp_pasien).vektor_total) {
-    //                 (*temp_pasien).p_prioritas = (*next_prio)->p_prioritas->p_prioritas;
-    //                 (*next_prio)->p_prioritas = temp_pasien;
-    //             } else {
-    //                 *trav = (*next_prio)->p_prioritas;
-    //                 while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total) {
-    //                     (*trav) = (**trav).p_prioritas;
-    //                 }
-    //                 (*temp_pasien).p_prioritas = (**trav).p_prioritas;
-    //                 (**trav).p_prioritas = temp_pasien;
-    //             }
-    //         } else {
-    //             if ((*prio)->vektor_total < (*temp_pasien).vektor_total) {
-    //                 (*temp_pasien).p_prioritas = *prio;
-    //                 *prio = temp_pasien;
-    //             } else {
-    //                 *trav = *prio;
-    //                 while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total) {
-    //                     (*trav) = (**trav).p_prioritas;
-    //                 }
-    //                 (*temp_pasien).p_prioritas = (**trav).p_prioritas;
-    //                 (**trav).p_prioritas = temp_pasien;
-    //             }
-    //         }
-    //     } else {
-    //         *trav = *prio;
-    //         while ((**trav).p_prioritas != NULL) {
-    //             (*trav) = (**trav).p_prioritas;
-    //         }
-    //         (**trav).p_prioritas = temp_pasien;
-    //         (*next_prio) = (*trav);
-    //         (*main_time) = (*local_time);
-    //     }
-    // }
+    time(&rawtime);
+    local_time = localtime(&rawtime);
+    temp_pasien->jam_datang = local_time->tm_hour;
+    if ((*prio) == NULL) {
+        *prio = temp_pasien;
+    } else {
+        if ((*prio)->jam_datang == temp_pasien->jam_datang) { // jika jam datang masih sama dengan yg pertama
+            if ((*prio)->vektor_total < (*temp_pasien).vektor_total) {
+                (*temp_pasien).p_prioritas = *prio;
+                *prio = temp_pasien;
+            } else {
+                *trav = *prio;
+                while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total && (*trav)->p_prioritas->jam_datang == temp_pasien->jam_datang) {
+                    (*trav) = (**trav).p_prioritas;
+                }
+                (*temp_pasien).p_prioritas = (**trav).p_prioritas;
+                (**trav).p_prioritas = temp_pasien;
+            }
+        } else {
+            *trav = *prio;
+            while ((*trav)->p_prioritas != NULL && (*trav)->jam_datang != temp_pasien->jam_datang) {
+                (*trav) = (*trav)->p_prioritas;
+            }
+            if ((*trav)->vektor_total < temp_pasien->vektor_total) {
+                temp_pasien->p_prioritas = (*trav);
+                *trav = temp_pasien;
+            } else {
+                while ((*trav)->p_prioritas != NULL && (*trav)->p_prioritas->vektor_total > temp_pasien->vektor_total) {
+                    *trav = (*trav)->p_prioritas;
+                }
+                temp_pasien->p_prioritas = (*trav)->p_prioritas;
+                (*trav)->p_prioritas = temp_pasien;
+            }
+        }
+    }
 }

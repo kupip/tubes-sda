@@ -44,6 +44,7 @@ typedef struct pasien {
     char alamat[50];
     char jenis_kelamin;
     float vektor_total;
+    int jam_datang;
     Kriteria krit;
     address_pasien p_input;
     address_pasien p_prioritas;
@@ -52,7 +53,6 @@ typedef struct pasien {
 typedef struct head_p {
     address_pasien inp;
     address_pasien prio;
-    address_pasien next_prio;
 } Head;
 
 
@@ -70,7 +70,7 @@ void tampilkan_antrian(Pasien *first);
 
 void hapus_pasien (Head *first);
 void hapus_data_pasien(Head *first);
-void panggil_antrean_pasien(Head *first);
+void panggil_antrean_pasien(address_pasien *first_prio);
 void hapus_data_semua_pasien(Head *first);
 void kursor(SHORT x, SHORT y);
 
