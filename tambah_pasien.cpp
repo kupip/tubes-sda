@@ -123,33 +123,25 @@ void sambung_prio(address_pasien *prio,  address_pasien* trav, address_pasien te
     if ((*prio) == NULL) {
         *prio = temp_pasien;
     } else {
-        if ((*prio)->jam_datang == temp_pasien->jam_datang) { // jika jam datang masih sama dengan yg pertama
-            if ((*prio)->vektor_total < (*temp_pasien).vektor_total) {
-                (*temp_pasien).p_prioritas = *prio;
-                *prio = temp_pasien;
-            } else {
-                *trav = *prio;
-                while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total && (*trav)->p_prioritas->jam_datang == temp_pasien->jam_datang) {
-                    (*trav) = (**trav).p_prioritas;
-                }
-                (*temp_pasien).p_prioritas = (**trav).p_prioritas;
-                (**trav).p_prioritas = temp_pasien;
-            }
+        if ((*prio)->jam_datang == temp_pasien->jam_datang && (*prio)->vektor_total < temp_pasien->vektor_total) {
+            (*temp_pasien).p_prioritas = *prio;
+            *prio = temp_pasien;
         } else {
             *trav = *prio;
-            while ((*trav)->p_prioritas != NULL && (*trav)->jam_datang != temp_pasien->jam_datang) {
-                (*trav) = (*trav)->p_prioritas;
+
+            // loop jam
+            while ((*trav)->p_prioritas != NULL && (*trav)->p_prioritas->jam_datang < temp_pasien->jam_datang) {
+                *trav = (*trav)->p_prioritas;
             }
-            if ((*trav)->vektor_total < temp_pasien->vektor_total) {
-                temp_pasien->p_prioritas = (*trav);
-                *trav = temp_pasien;
-            } else {
-                while ((*trav)->p_prioritas != NULL && (*trav)->p_prioritas->vektor_total > temp_pasien->vektor_total) {
-                    *trav = (*trav)->p_prioritas;
-                }
-                temp_pasien->p_prioritas = (*trav)->p_prioritas;
-                (*trav)->p_prioritas = temp_pasien;
+
+            // loop vektor
+            while ((*trav)->p_prioritas != NULL && (*trav)->p_prioritas->vektor_total >= temp_pasien->vektor_total) {
+                *trav = (*trav)->p_prioritas;
             }
+
+            // penyesuaian pointer prio
+            (*temp_pasien).p_prioritas = (**trav).p_prioritas;
+            (**trav).p_prioritas = temp_pasien;
         }
     }
 }
