@@ -6,6 +6,7 @@
 #include <string.h>
 #include <windows.h>
 #include <conio.h>
+#include <time.h>
 #define TIDAK_BERUBAH true
 #define BERUBAH false
 #define ELASTIS true
@@ -58,7 +59,7 @@ int menu_utama();
 void banner();
 
 void hitung_vektor(address_pasien *first, bobot_krit a_bobot);
-void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot);
+void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot, tm* main_time);
 
 void set_bobot_master(bobot_krit *a_bobot);
 void ubah_bobot_master(bobot_krit *a_bobot);
@@ -68,7 +69,7 @@ void tampilkan_antrian(Pasien *first);
 
 void hapus_pasien (Head *first);
 void hapus_data_pasien(Head *first);
-void hapus_antrean_pasien(address_pasien *first);
+void panggil_antrean_pasien(address_pasien *first);
 void hapus_data_semua_pasien(Head *first);
 void kursor(SHORT x, SHORT y);
 

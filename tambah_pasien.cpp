@@ -1,15 +1,17 @@
 #include "pasien.h"
 void input_kriteria(Pasien *temp_pasien);
+void sambung_prio(address_pasien *prio, address_pasien* trav, address_pasien temp_pasien, tm* main_time);
 
-void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot) {
+void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot, tm* main_time)
+{
     Pasien *temp_pasien = (Pasien*) malloc(sizeof(Pasien));
     static int id=0;
 
     // Pengisian nilai awal ke pointer
     temp_pasien->p_input=NULL;
     temp_pasien->p_prioritas=NULL;
-
     (*temp_pasien).id = ++id;
+
     printf("Masukkan nama pasien: ");
     scanf("%[^\n]s", (*temp_pasien).nama);
     getchar();
@@ -22,6 +24,7 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot) {
     scanf("%c", &((*temp_pasien).jenis_kelamin));
     getchar();
     strupr(&((*temp_pasien).jenis_kelamin));
+    
     // antisipasi input error
     while ((*temp_pasien).jenis_kelamin != 'L' && (*temp_pasien).jenis_kelamin != 'P' )
     {
@@ -32,41 +35,28 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot) {
     }
     input_kriteria(&(*temp_pasien));
     hitung_vektor(&temp_pasien, a_bobot);
-
+    
     // penyambungan berdasarkan urutan input
     if ((*first).inp == NULL) {
         (*first).inp = temp_pasien;
     } else {
         *trav = (*first).inp;
-        while ((*trav)->p_input != NULL)
-        {
-            /* code */
+        while ((*trav)->p_input != NULL) {
             (*trav) = (*trav)->p_input;
         }
         (*trav)->p_input = temp_pasien;
     }
 
     // penyambungan berdasarkan prioritas
-    if ((*first).prio == NULL) {
-        (*first).prio = temp_pasien;
-    } else {
-        if ((*first).prio->vektor_total < (*temp_pasien).vektor_total) {
-            (*temp_pasien).p_prioritas = (*first).prio;
-            (*first).prio = temp_pasien;
-        } else {
-            *trav = (*first).prio;
-            while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total) {
-                (*trav) = (**trav).p_prioritas;
-            }
-            (*temp_pasien).p_prioritas = (**trav).p_prioritas;
-            (**trav).p_prioritas = temp_pasien;
-        }
-    }
+    sambung_prio(&((*first).prio), trav, temp_pasien, &(*main_time));
 }
 
-void input_kriteria(Pasien *temp_pasien) {
+void input_kriteria(Pasien *temp_pasien)
+{
+    // Kamus Data
     int temp=0;
 
+    // Algoritma
     printf("Masukkan tekanan darah sistole: ");
     scanf("%d", &((*temp_pasien).krit.td_sistole));
 
@@ -118,4 +108,39 @@ void input_kriteria(Pasien *temp_pasien) {
         (*temp_pasien).krit.elastisitas_pembuluh_nadi = KERAS;
     }
     system("cls");
+}
+
+void sambung_prio(address_pasien *prio, address_pasien* trav, address_pasien temp_pasien, tm* main_time)
+{
+    // Kamus Data
+    time_t rawtime;
+    tm* local_time;
+
+    // Algoritma
+    time(&rawtime);
+    local_time = localtime(&rawtime);
+    if ((*prio) == NULL) {
+        *prio = temp_pasien;
+    } else {
+        if (local_time->tm_hour == main_time->tm_hour) {
+            if ((*prio)->vektor_total < (*temp_pasien).vektor_total) {
+                (*temp_pasien).p_prioritas = *prio;
+                *prio = temp_pasien;
+            } else {
+                *trav = *prio;
+                while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total) {
+                    (*trav) = (**trav).p_prioritas;
+                }
+                (*temp_pasien).p_prioritas = (**trav).p_prioritas;
+                (**trav).p_prioritas = temp_pasien;
+            }
+        } else {
+            *trav = *prio;
+            while ((**trav).p_prioritas != NULL) {
+                (*trav) = (**trav).p_prioritas;
+            }
+            (**trav).p_prioritas = temp_pasien;
+            (*main_time) = (*local_time);
+        }
+    }
 }

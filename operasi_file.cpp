@@ -1,7 +1,10 @@
 #include "pasien.h"
 
 void simpan_file(address_pasien trav) {
+    // Kamus Data
     FILE *tulis = fopen("save\\data.csv", "w");
+
+    // Algoritma
     if (trav != NULL) {
         while (trav != NULL) {
             fprintf(tulis, "%d,%s,%s,%c,%f,", (*trav).id, (*trav).nama, (*trav).alamat, (*trav).jenis_kelamin, (*trav).vektor_total);
@@ -18,22 +21,24 @@ void simpan_file(address_pasien trav) {
 }
 
 void baca_file(Head *a_head) {
+    // Kamus Data
     FILE *baca = fopen("save\\data.csv", "r");
     address_pasien trav=NULL;
     char temp_elastis=' ';
     char temp_tegang=' ';
 
+    // Algoritma
     if ((*a_head).inp == NULL) {
         (*a_head).inp = (address_pasien) malloc(sizeof(Pasien));
         if (fscanf(baca, "%d,%[^,],%[^,],%c,%f,", &((*a_head).inp->id), (*a_head).inp->nama, (*a_head).inp->alamat, &((*a_head).inp->jenis_kelamin), &((*a_head).inp->vektor_total)) != EOF) {
             fscanf(baca, "%d,%d,%d,%d,%d,%f,%c,%d,%c\n", &((*a_head).inp->krit.td_sistole), &((*a_head).inp->krit.td_diastole),
             &((*a_head).inp->krit.detak_nadi), &((*a_head).inp->krit.detak_jantung), &((*a_head).inp->krit.frek_napas), &((*a_head).inp->krit.suhu_badan),
             &(temp_tegang), &((*a_head).inp->krit.hr_x_nadi), &(temp_elastis));
-            
             (*a_head).inp->krit.tegangan_nadi = (temp_tegang == 't'?true:false);
             (*a_head).inp->krit.elastisitas_pembuluh_nadi = (temp_elastis == 't' ? true:false);
             strcat((*a_head).inp->nama, "\0");
             strcat((*a_head).inp->alamat, "\0");
+            
             (*a_head).inp->p_input = NULL;
             (*a_head).inp->p_prioritas = NULL;
             (*a_head).prio = (*a_head).inp;
@@ -46,9 +51,23 @@ void baca_file(Head *a_head) {
                     &(trav->p_input->krit.suhu_badan), &(temp_tegang), &(trav->p_input->krit.hr_x_nadi), &(temp_elastis));
                     (*trav).p_input->krit.tegangan_nadi = (temp_tegang == 't'?true:false);
                     (*trav).p_input->krit.elastisitas_pembuluh_nadi = (temp_elastis == 't' ? true:false);
+                    
+                    // menyambungkan berdasarkan prio
+                    if ((*a_head).prio->vektor_total < (*trav).p_input->vektor_total) {
+                        (*trav).p_input->p_prioritas = (*a_head).prio;
+                        (*a_head).prio = trav->p_input;
+                    } else {
+                        trav->p_input = (*a_head).prio;
+                        while (trav->p_input->p_prioritas != NULL && trav->p_input->p_prioritas->vektor_total > trav->p_input->vektor_total) {
+                            trav->p_input = trav->p_input->p_prioritas;
+                        }
+                        trav->p_input->p_prioritas = trav->p_input->p_prioritas;
+                        trav->p_input->p_prioritas = trav->p_input;
+                    }
+
+                    // menyambungkan berdasarkan input
                     trav = trav->p_input;
                     trav->p_input = (address_pasien) malloc(sizeof(Pasien));
-                    // trav->p_input = NULL;
                 }
                 trav->p_input = NULL;
             }

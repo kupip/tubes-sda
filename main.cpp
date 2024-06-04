@@ -7,27 +7,33 @@ int main() {
     address_pasien trav=NULL;
     bobot_krit sebuah_bobot;
     int menu;
+    time_t rawtime;
+    tm main_time;
 
     // Algoritma
-   baca_file(&a_head);
-    while (menu != 8){
+    baca_file(&a_head);
+    time(&rawtime);
+    main_time = *(localtime(&rawtime));
+    // main_time.tm_hour = 11; percobaan beda jam
+    while (menu != 9) {
         system("cls");
         banner();
         printf("1. Tambah Pasien\n");
         printf("2. Tampil Daftar Pasien\n");
         printf("3. Tampil Antrean Pasien\n");
-        printf("4. Hapus Pasien\n");
-        printf("5. Ubah Bobot Master\n");
-        printf("6. Panduan\n");
-        printf("7. Kredit\n");
-        printf("8. Quit\n");
+        printf("4. Proses antrean (panggil pasien)\n");
+        printf("5. Hapus Pasien\n");
+        printf("6. Ubah Bobot Master\n");
+        printf("7. Panduan\n");
+        printf("8. Kredit\n");
+        printf("9. Quit\n");
         printf("Masukkan pilihan anda: ");
         scanf("%d",&menu);
         getchar();
 
         switch (menu) {
             case 1:
-                tambah_pasien(&(a_head), &trav, sebuah_bobot);
+                tambah_pasien(&(a_head), &trav, sebuah_bobot, &main_time);
                 break;
             case 2:
                 tampilkan_daftar_pasien(a_head.inp);
@@ -36,18 +42,21 @@ int main() {
                 tampilkan_antrian(a_head.prio);
                 break;
             case 4:
-                hapus_pasien (&(a_head));
+                panggil_antrean_pasien(&(a_head.prio));
                 break;
             case 5:
-                ubah_bobot_master(&sebuah_bobot);
+                hapus_pasien (&(a_head));
                 break;
             case 6:
-                tampil_panduan();
+                ubah_bobot_master(&sebuah_bobot);
                 break;
             case 7:
-                tampil_kredit();
+                tampil_panduan();
                 break;
             case 8:
+                tampil_kredit();
+                break;
+            case 9:
                 simpan_file(a_head.inp);
                 break;
             default:
