@@ -7,15 +7,10 @@ int main() {
     address_pasien trav=NULL;
     bobot_krit sebuah_bobot;
     int menu;
-    time_t rawtime;
-    tm main_time;
 
     // Algoritma
     baca_file(&a_head);
-    time(&rawtime);
-    main_time = *(localtime(&rawtime));
-    // main_time.tm_hour = 11; percobaan beda jam
-    while (menu != 9) {
+    while (menu != 9){
         system("cls");
         banner();
         printf("1. Tambah Pasien\n");
@@ -33,7 +28,7 @@ int main() {
 
         switch (menu) {
             case 1:
-                tambah_pasien(&(a_head), &trav, sebuah_bobot, &main_time);
+                tambah_pasien(&(a_head), &trav, sebuah_bobot);
                 break;
             case 2:
                 tampilkan_daftar_pasien(a_head.inp);

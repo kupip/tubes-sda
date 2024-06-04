@@ -60,7 +60,7 @@ int menu_utama();
 void banner();
 
 void hitung_vektor(address_pasien *first, bobot_krit a_bobot);
-void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot, tm* main_time);
+void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot);
 
 void set_bobot_master(bobot_krit *a_bobot);
 void ubah_bobot_master(bobot_krit *a_bobot);

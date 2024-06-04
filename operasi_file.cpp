@@ -51,6 +51,8 @@ void baca_file(Head *a_head) {
                     &(trav->p_input->krit.suhu_badan), &(temp_tegang), &(trav->p_input->krit.hr_x_nadi), &(temp_elastis));
                     (*trav).p_input->krit.tegangan_nadi = (temp_tegang == 't'?true:false);
                     (*trav).p_input->krit.elastisitas_pembuluh_nadi = (temp_elastis == 't' ? true:false);
+                    (*trav).krit.tegangan_nadi = (temp_tegang == 't'?true:false);
+                    (*trav).krit.elastisitas_pembuluh_nadi = (temp_elastis == 't' ? true:false);
                     
                     // menyambungkan berdasarkan prio
                     if ((*a_head).prio->vektor_total < (*trav).p_input->vektor_total) {
@@ -64,7 +66,7 @@ void baca_file(Head *a_head) {
                         trav->p_input->p_prioritas = trav->p_input->p_prioritas;
                         trav->p_input->p_prioritas = trav->p_input;
                     }
-
+                    
                     // menyambungkan berdasarkan input
                     trav = trav->p_input;
                     trav->p_input = (address_pasien) malloc(sizeof(Pasien));
