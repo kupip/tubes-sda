@@ -26,9 +26,7 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot)
     strupr(&((*temp_pasien).jenis_kelamin));
     
     // antisipasi input error
-    while ((*temp_pasien).jenis_kelamin != 'L' && (*temp_pasien).jenis_kelamin != 'P' )
-    {
-        /* code */
+    while ((*temp_pasien).jenis_kelamin != 'L' && (*temp_pasien).jenis_kelamin != 'P' ) {
         printf("Masukkan input yang sesuai (L/P): ");
         scanf("%c", &((*temp_pasien).jenis_kelamin));
         getchar();
@@ -79,10 +77,9 @@ void input_kriteria(Pasien *temp_pasien)
 
     printf("Tegangan nadi\n1. Tidak Berubah\n2. Kuat dan Lemah Berubah-ubah\nMasukkan angka: ");
     scanf("%d", &temp);
+
     // antisipasi input error
-    while (temp != 1 && temp != 2)
-    {
-        /* code */
+    while (temp != 1 && temp != 2) {
         printf("Masukkan input yang valid: ");
         scanf("%d", &temp);
     }
@@ -94,15 +91,14 @@ void input_kriteria(Pasien *temp_pasien)
 
     printf("\nElastisitas pembuluh nadi\n1. Elastis\n2. Keras seperti kawat\nMasukkan angka: ");
     scanf("%d", &temp);
+
     // antisipasi input error
-    while (temp != 1 && temp != 2)
-    {
-        /* code */
+    while (temp != 1 && temp != 2) {
         printf("Masukkan input yang valid: ");
         scanf("%d", &temp);
     }
+
     if (temp == 1) {
-        /* code */
         (*temp_pasien).krit.elastisitas_pembuluh_nadi = ELASTIS;
     } else {
         (*temp_pasien).krit.elastisitas_pembuluh_nadi = KERAS;
