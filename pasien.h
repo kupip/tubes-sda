@@ -52,6 +52,7 @@ typedef struct pasien {
 typedef struct head_p {
     address_pasien inp;
     address_pasien prio;
+    address_pasien next_prio;
 } Head;
 
 
@@ -69,7 +70,7 @@ void tampilkan_antrian(Pasien *first);
 
 void hapus_pasien (Head *first);
 void hapus_data_pasien(Head *first);
-void panggil_antrean_pasien(address_pasien *first);
+void panggil_antrean_pasien(Head *first);
 void hapus_data_semua_pasien(Head *first);
 void kursor(SHORT x, SHORT y);
 

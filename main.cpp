@@ -42,7 +42,7 @@ int main() {
                 tampilkan_antrian(a_head.prio);
                 break;
             case 4:
-                panggil_antrean_pasien(&(a_head.prio));
+                panggil_antrean_pasien(&(a_head));
                 break;
             case 5:
                 hapus_pasien (&(a_head));

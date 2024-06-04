@@ -105,17 +105,21 @@ void hapus_data_pasien(Head *first)
         printf("data berhasil di hapus\n");
 }
 
-void panggil_antrean_pasien(address_pasien *first)
+void panggil_antrean_pasien(Head *first)
 {
-    if ((*first)->p_prioritas== NULL){
-        (*first) = NULL;
+    address_pasien trav;
+    int jmlh_pasien=0;
+
+    if ((*first).prio->p_prioritas== NULL){
+        (*first).prio = NULL;
+        (*first).next_prio= NULL;
     } else {
-        (*first) = (*first)->p_prioritas ;
+        (*first).prio = (*first).prio->p_prioritas ;
     }
+    
+    trav = (*first).prio;
     system("cls");
     printf("Antrean saat ini");
-    address_pasien trav = *first;
-    int jmlh_pasien=0;
     while (trav != NULL)
     {   
         jmlh_pasien++;

@@ -1,6 +1,6 @@
 #include "pasien.h"
 void input_kriteria(Pasien *temp_pasien);
-void sambung_prio(address_pasien *prio, address_pasien* trav, address_pasien temp_pasien, tm* main_time);
+void sambung_prio(address_pasien *prio, address_pasien *next_prio, address_pasien* trav, address_pasien temp_pasien, tm* main_time);
 
 void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot, tm* main_time)
 {
@@ -48,7 +48,7 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot, tm* main_time
     }
 
     // penyambungan berdasarkan prioritas
-    sambung_prio(&((*first).prio), trav, temp_pasien, &(*main_time));
+    sambung_prio(&((*first).prio), &((*first).next_prio), trav, temp_pasien, &(*main_time));
 }
 
 void input_kriteria(Pasien *temp_pasien)
@@ -110,7 +110,7 @@ void input_kriteria(Pasien *temp_pasien)
     system("cls");
 }
 
-void sambung_prio(address_pasien *prio, address_pasien* trav, address_pasien temp_pasien, tm* main_time)
+void sambung_prio(address_pasien *prio, address_pasien *next_prio, address_pasien* trav, address_pasien temp_pasien, tm* main_time)
 {
     // Kamus Data
     time_t rawtime;
@@ -121,18 +121,33 @@ void sambung_prio(address_pasien *prio, address_pasien* trav, address_pasien tem
     local_time = localtime(&rawtime);
     if ((*prio) == NULL) {
         *prio = temp_pasien;
+        *next_prio = temp_pasien;;
     } else {
         if (local_time->tm_hour == main_time->tm_hour) {
-            if ((*prio)->vektor_total < (*temp_pasien).vektor_total) {
-                (*temp_pasien).p_prioritas = *prio;
-                *prio = temp_pasien;
-            } else {
-                *trav = *prio;
-                while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total) {
-                    (*trav) = (**trav).p_prioritas;
+            if ((*prio) != (*next_prio)->p_prioritas) { // ngecek apakah head prio sekarang == next_first_prio
+                if ((*next_prio)->p_prioritas->vektor_total < (*temp_pasien).vektor_total) {
+                    (*temp_pasien).p_prioritas = (*next_prio)->p_prioritas->p_prioritas;
+                    (*next_prio)->p_prioritas = temp_pasien;
+                } else {
+                    *trav = (*next_prio)->p_prioritas;
+                    while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total) {
+                        (*trav) = (**trav).p_prioritas;
+                    }
+                    (*temp_pasien).p_prioritas = (**trav).p_prioritas;
+                    (**trav).p_prioritas = temp_pasien;
                 }
-                (*temp_pasien).p_prioritas = (**trav).p_prioritas;
-                (**trav).p_prioritas = temp_pasien;
+            } else {
+                if ((*prio)->vektor_total < (*temp_pasien).vektor_total) {
+                    (*temp_pasien).p_prioritas = *prio;
+                    *prio = temp_pasien;
+                } else {
+                    *trav = *prio;
+                    while ((**trav).p_prioritas != NULL && (**trav).p_prioritas->vektor_total > (*temp_pasien).vektor_total) {
+                        (*trav) = (**trav).p_prioritas;
+                    }
+                    (*temp_pasien).p_prioritas = (**trav).p_prioritas;
+                    (**trav).p_prioritas = temp_pasien;
+                }
             }
         } else {
             *trav = *prio;
@@ -140,6 +155,7 @@ void sambung_prio(address_pasien *prio, address_pasien* trav, address_pasien tem
                 (*trav) = (**trav).p_prioritas;
             }
             (**trav).p_prioritas = temp_pasien;
+            (*next_prio) = (*trav);
             (*main_time) = (*local_time);
         }
     }
