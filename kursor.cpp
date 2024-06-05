@@ -1,6 +1,7 @@
 #include "pasien.h"
 
-void kursor(SHORT x, SHORT y) {
+void kursor(SHORT x, SHORT y)
+{
     HANDLE out_handle = GetStdHandle(STD_OUTPUT_HANDLE);
     COORD cursor_co;
     

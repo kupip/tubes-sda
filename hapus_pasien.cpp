@@ -107,24 +107,17 @@ void hapus_data_pasien(Head *first)
 
 void panggil_antrean_pasien(address_pasien *first_prio)
 {
-    address_pasien trav;
-    int jmlh_pasien=0;
-
     if ((*first_prio)->p_prioritas== NULL){
         (*first_prio) = NULL;
+        system("cls");
+        printf("Tidak ada pasien yang tersisa");
     } else {
+        system("cls");
+        printf("Pasien dengan nama %s dari %s\n",(*first_prio)->nama,(*first_prio)->alamat);
+        printf("silahkan memasuki ruangan pemeriksaan\n");
         (*first_prio) = (*first_prio)->p_prioritas ;
-    }
+    }  
     
-    trav = (*first_prio);
-    system("cls");
-    printf("Antrean saat ini");
-    while (trav != NULL)
-    {   
-        jmlh_pasien++;
-        printf("%d. %s dengan nilai vektor %.4f\n", jmlh_pasien, (*trav).nama, (*trav).vektor_total);
-        trav = (*trav).p_prioritas;
-    }
     printf("Tekan apa pun untuk kembali.\n");
     getchar();
 }

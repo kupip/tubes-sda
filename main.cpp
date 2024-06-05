@@ -1,4 +1,8 @@
 #include "pasien.h"
+
+void print_menu_utama();
+void center_text(const char *text, unsigned int field_width);
+
 int main() {
     // Kamus Data
     Head a_head;
@@ -13,16 +17,17 @@ int main() {
     while (menu != 9){
         system("cls");
         banner();
-        printf("1. Tambah Pasien\n");
-        printf("2. Tampil Daftar Pasien\n");
-        printf("3. Tampil Antrean Pasien\n");
-        printf("4. Proses antrean (panggil pasien)\n");
-        printf("5. Hapus Pasien\n");
-        printf("6. Ubah Bobot Master\n");
-        printf("7. Panduan\n");
-        printf("8. Kredit\n");
-        printf("9. Quit\n");
-        printf("Masukkan pilihan anda: ");
+        print_menu_utama();
+        // printf("1. Tambah Pasien\n");
+        // printf("2. Tampil Daftar Pasien\n");
+        // printf("3. Tampil Antrean Pasien\n");
+        // printf("4. Proses antrean (panggil pasien)\n");
+        // printf("5. Hapus Pasien\n");
+        // printf("6. Ubah Bobot Master\n");
+        // printf("7. Panduan\n");
+        // printf("8. Kredit\n");
+        // printf("9. Quit\n");
+        // printf("Masukkan pilihan anda: ");
         scanf("%d",&menu);
         getchar();
 
@@ -61,3 +66,28 @@ int main() {
         }
     }
 }
+
+void print_menu_utama()
+{
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int columns;
+  
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+    
+    center_text("1. Tambah Pasien", columns);
+    // printf("1. Tambah Pasien\n");
+    // printf("2. Tampil Daftar Pasien\n");
+    // printf("3. Tampil Antrean Pasien\n");
+    // printf("4. Proses antrean (panggil pasien)\n");
+    // printf("5. Hapus Pasien\n");
+    // printf("6. Ubah Bobot Master\n");
+    // printf("7. Panduan\n");
+    // printf("8. Kredit\n");
+    // printf("9. Quit\n");   
+}
+
+void center_text(const char *text, unsigned int field_width) {
+    unsigned int pad_len = (field_width - strlen(text)) / 2;
+    printf("%*s%s%*s\n", pad_len, "", text, pad_len, "");
+} 
