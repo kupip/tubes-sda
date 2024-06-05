@@ -12,22 +12,15 @@ int main() {
     bobot_krit sebuah_bobot;
     int menu;
 
+    // maximize window
+    ShowWindow(GetConsoleWindow(), SW_MAXIMIZE);
+
     // Algoritma
     baca_file(&a_head);
     while (menu != 9){
         system("cls");
         banner();
         print_menu_utama();
-        // printf("1. Tambah Pasien\n");
-        // printf("2. Tampil Daftar Pasien\n");
-        // printf("3. Tampil Antrean Pasien\n");
-        // printf("4. Proses antrean (panggil pasien)\n");
-        // printf("5. Hapus Pasien\n");
-        // printf("6. Ubah Bobot Master\n");
-        // printf("7. Panduan\n");
-        // printf("8. Kredit\n");
-        // printf("9. Quit\n");
-        // printf("Masukkan pilihan anda: ");
         scanf("%d",&menu);
         getchar();
 
@@ -75,19 +68,33 @@ void print_menu_utama()
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     
-    center_text("1. Tambah Pasien", columns);
-    // printf("1. Tambah Pasien\n");
-    // printf("2. Tampil Daftar Pasien\n");
-    // printf("3. Tampil Antrean Pasien\n");
-    // printf("4. Proses antrean (panggil pasien)\n");
-    // printf("5. Hapus Pasien\n");
-    // printf("6. Ubah Bobot Master\n");
-    // printf("7. Panduan\n");
-    // printf("8. Kredit\n");
-    // printf("9. Quit\n");   
+    center_text("\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 1. Tambah Pasien                   \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 2. Tampil Daftar Pasien            \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 3. Tampil Antrean Pasien           \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 4. Proses antrean (panggil pasien) \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 5. Hapus Pasien                    \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 6. Ubah Bobot Master               \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 7. Panduan                         \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 8. Kredit                          \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xBA 9. Quit                            \xBA", (unsigned) columns);
+    printf("\n");
+    center_text("\xC8\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBC", (unsigned) columns);
+    printf("\n");
+    center_text("Masukkan input: ", (unsigned) columns);
+    printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
 }
 
 void center_text(const char *text, unsigned int field_width) {
     unsigned int pad_len = (field_width - strlen(text)) / 2;
-    printf("%*s%s%*s\n", pad_len, "", text, pad_len, "");
+    printf("%*s%s%*s", pad_len, "", text, pad_len, "");
 } 

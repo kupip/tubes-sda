@@ -79,4 +79,5 @@ void simpan_file(address_pasien trav);
 
 void tampil_panduan();
 void tampil_kredit();
+void center_text(const char *text, unsigned int field_width);
 #endif
