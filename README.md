@@ -11,5 +11,8 @@ Fitur-fitur yang terdapat pada aplikasi ini adalah sebagai berikut:
 
 ## Tim
 Tim pembuat aplikasi ini terdiri atas:
-1. Muhammad Rafif Genadratama (231524016); dan
+1. Muhammad Rafif Genadratama (231524016), dan
 2. Nadia Rachma Yuninda (231524017).
+
+## Running
+Untuk menjalankan aplikasi, anda dapat langsung menjalankan outDebug.exe.
