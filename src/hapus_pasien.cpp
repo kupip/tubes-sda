@@ -110,14 +110,16 @@ void panggil_antrean_pasien(address_pasien *first_prio)
     if ((*first_prio)->p_prioritas== NULL){
         (*first_prio) = NULL;
         system("cls");
+        printf("\t\t\t\t\t\t\t");
         printf("Tidak ada pasien yang tersisa");
     } else {
         system("cls");
-        printf("Pasien dengan nama %s dari %s\n",(*first_prio)->nama,(*first_prio)->alamat);
-        printf("silahkan memasuki ruangan pemeriksaan\n");
+        printf("\t\t\t\t\t\t\t");
+        printf("Pasien dengan nama %s dari %s\n", (*first_prio)->nama,(*first_prio)->alamat);
+        printf("Silahkan memasuki ruangan pemeriksaan\n");
         (*first_prio) = (*first_prio)->p_prioritas ;
     }  
-    
+    printf("\t\t\t\t\t\t\t");
     printf("Tekan apa pun untuk kembali.\n");
     getchar();
 }
