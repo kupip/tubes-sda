@@ -1,6 +1,5 @@
 #include "pasien.h"
 
-
 void hapus_pasien(Head *first)
 {
     if ((*first).prio == NULL ){
@@ -8,11 +7,12 @@ void hapus_pasien(Head *first)
         printf("Belum terdapat data pasien");
     } else {
         int menu=0;
-        while (menu != 1 ) {
+        while (menu != 3) {
             system("cls");
             printf("Menu hapus\n");
             printf("1. Hapus data pasien dari daftar\n");
             printf("2. Hapus data semua pasien\n");
+            printf("3. Batal\n");
             printf("Masukkan angka: ");
             scanf("%d", &menu);
             switch (menu) {
@@ -21,6 +21,8 @@ void hapus_pasien(Head *first)
                     break;
                 case 2:
                     hapus_data_semua_pasien(&(*first));
+                    break;
+                case 3:
                     break;
                 default:
                     printf("Masukkan input yang valid.");
