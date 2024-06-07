@@ -30,7 +30,7 @@ void tampilkan_daftar_pasien(Pasien *first)
             printf("Alamat: %s\n", (*trav).alamat);
             printf("Jenis kelamin: %c\n", (*trav).jenis_kelamin);
             printf("TD sistolik         : %d      TD diastolik : %d\n", (*trav).krit.td_sistole, (*trav).krit.td_diastole);
-            printf("Detak nadi          : %d      Detak jantung:\n",(*trav).krit.detak_nadi, (*trav).krit.detak_jantung);
+            printf("Detak nadi          : %d      Detak jantung:%d\n",(*trav).krit.detak_nadi, (*trav).krit.detak_jantung);
             printf("Frekuensi pernapasan: %d      Suhu badan: %.1f\n", (*trav).krit.frek_napas, (*trav).krit.suhu_badan);
             if((*trav).krit.elastisitas_pembuluh_nadi == ELASTIS){
                 printf("Elastisitas pembuluh nadi: elastis\n");
