@@ -18,10 +18,13 @@ void set_bobot_master(bobot_krit *a_bobot)
 
 void ubah_bobot_master(bobot_krit *a_bobot)
 {   
+    bobot_krit temp_bobot=(*a_bobot);
     // Algoritma
     system("cls");
     banner();
     printf("\n\n\n");
+    printf("\t\t\t\t\t\t\t");
+    printf("Masukkan angka 0 untuk membatalkan pengubahan");
     printf("\t\t\t\t\t\t\t");
     printf("Bobot Tekanan Darah\n");
     printf("\t\t\t\t\t\t\t");
@@ -37,6 +40,10 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("\t\t\t\t\t\t\t");
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_td));
+    if ((*a_bobot).bobot_td == 0) {
+        (*a_bobot)=temp_bobot;
+        return;
+    }
     (*a_bobot).bobot_td = 6 - (*a_bobot).bobot_td;
 
     printf("\t\t\t\t\t\t\t");
@@ -54,6 +61,10 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("\t\t\t\t\t\t\t");
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_nadi));
+    if ((*a_bobot).bobot_nadi == 0) {
+        (*a_bobot)=temp_bobot;
+        return;
+    }
     (*a_bobot).bobot_nadi = 6 - (*a_bobot).bobot_nadi;
 
     printf("\t\t\t\t\t\t\t");
@@ -71,6 +82,10 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("\t\t\t\t\t\t\t");
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_hr));
+    if ((*a_bobot).bobot_hr == 0) {
+        (*a_bobot)=temp_bobot;
+        return;
+    }
     (*a_bobot).bobot_hr = 6 - (*a_bobot).bobot_hr;
 
     printf("\t\t\t\t\t\t\t");
@@ -88,6 +103,10 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("\t\t\t\t\t\t\t");
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_napas));
+    if ((*a_bobot).bobot_napas == 0) {
+        (*a_bobot)=temp_bobot;
+        return;
+    }
     (*a_bobot).bobot_napas = 6 - (*a_bobot).bobot_napas;
 
     printf("\t\t\t\t\t\t\t");
@@ -105,6 +124,10 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("\t\t\t\t\t\t\t");
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_suhu));
+    if ((*a_bobot).bobot_suhu == 0) {
+        (*a_bobot)=temp_bobot;
+        return;
+    }
     (*a_bobot).bobot_suhu = 6 - (*a_bobot).bobot_suhu;
 
     printf("\t\t\t\t\t\t\t");
@@ -122,6 +145,10 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("\t\t\t\t\t\t\t");
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_tegang_nadi));
+    if ((*a_bobot).bobot_tegang_nadi == 0) {
+        (*a_bobot)=temp_bobot;
+        return;
+    }
     (*a_bobot).bobot_tegang_nadi = 6 - (*a_bobot).bobot_tegang_nadi;
 
     printf("\t\t\t\t\t\t\t");
@@ -139,6 +166,10 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("\t\t\t\t\t\t\t");
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_n_hr));
+    if ((*a_bobot).bobot_n_hr == 0) {
+        (*a_bobot)=temp_bobot;
+        return;
+    }
     (*a_bobot).bobot_n_hr = 6 - (*a_bobot).bobot_n_hr;
 
     printf("\t\t\t\t\t\t\t");
@@ -156,5 +187,9 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     printf("\t\t\t\t\t\t\t");
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_elastis_nadi));
+    if ((*a_bobot).bobot_elastis_nadi == 0) {
+        (*a_bobot)=temp_bobot;
+        return;
+    }
     (*a_bobot).bobot_elastis_nadi = 6 - (*a_bobot).bobot_elastis_nadi;
 }

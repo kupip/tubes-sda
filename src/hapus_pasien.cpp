@@ -116,10 +116,19 @@ void panggil_antrean_pasien(address_pasien *first_prio)
         printf("Tidak ada pasien yang tersisa");
     } else {
         system("cls");
-        printf("\t\t\t\t\t\t\t");
-        printf("Pasien dengan nama %s dari %s\n", (*first_prio)->nama,(*first_prio)->alamat);
-        printf("Silahkan memasuki ruangan pemeriksaan\n");
-        (*first_prio) = (*first_prio)->p_prioritas ;
+        printf("Anda yakin akan memanggila pasien dengan nama %s dari %s?(Y/N)", (*first_prio)->nama, (*first_prio)->alamat);
+        int temp = getchar();
+        while (temp != 89 && temp != 78) {
+            printf("Masukkan input yang valid: ");
+            temp = getchar();
+        }
+        if (temp == 89) {
+            printf("\t\t\t\t\t\t\t");
+            printf("Pasien dengan nama %s dari %s\n", (*first_prio)->nama,(*first_prio)->alamat);
+            printf("Silakan memasuki ruangan pemeriksaan\n");
+            (*first_prio) = (*first_prio)->p_prioritas ;   
+        }
+        return;
     }  
     printf("\t\t\t\t\t\t\t");
     printf("Tekan apa pun untuk kembali.\n");
