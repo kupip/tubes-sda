@@ -1,4 +1,15 @@
 #include "pasien.h"
+#define ATAS_KIRI 196
+#define ATAS_KANAN 191
+#define BAWAH_KIRI 192
+#define BAWAH_KANAN 217
+#define HORIZONTAL 196
+#define VERTIKAL 179
+#define T 194
+#define T_PANJANG_KIRI 180
+#define T_PANJANG_ATAS 193
+#define T_PANJANG_KANAN 195
+#define PEREMPATAN 197
 
 void tampilkan_daftar_pasien(Pasien *first)
 {
