@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/nadia/OneDrive/Documents/sda/tubes-sda/src",
-      "program": "c:/Users/nadia/OneDrive/Documents/sda/tubes-sda/src/build/Debug/outDebug",
+      "cwd": "c:/Users/rafif/OneDrive - Politeknik Negeri Bandung/sem 2/Semester 2/SDA/Praktikum/tubes-sda",
+      "program": "c:/Users/rafif/OneDrive - Politeknik Negeri Bandung/sem 2/Semester 2/SDA/Praktikum/tubes-sda/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

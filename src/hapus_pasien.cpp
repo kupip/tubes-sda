@@ -71,6 +71,7 @@ void hapus_pasien(Head *first)
             }
         }
     }
+    baris++;
     kursor(kolom, ++baris);
     printf("Tekan apapun untuk kembali.");
     getchar();
@@ -89,10 +90,10 @@ void hapus_data_pasien(Head *first)
     baris=10;
     system("cls");
     banner();
-    if ((*first).prio->p_input == NULL) {
+    if ((*first).inp->p_input == NULL) {
         kolom=(short) ((columns/2)-19);
         kursor(kolom, ++baris);
-        printf("Tersisa satu pasien yaitu %s", (*first).prio->nama);
+        printf("Tersisa satu pasien, yaitu %s.", (*first).prio->nama);
         kursor(kolom, ++baris);
         printf("Apakah anda ingin menghapus datanya?");
         kursor(kolom, ++baris);
@@ -117,6 +118,7 @@ void hapus_data_pasien(Head *first)
         }
     } else {
         address_pasien trav=first->inp;
+        
         // menampilkan daftar pasien yang ada
         int i=0;
         kursor((short) ((columns/2)-3), ++baris);
@@ -162,33 +164,34 @@ void hapus_data_pasien(Head *first)
                 kursor(kolom, ++baris);
                 printf("Penghapusan dibatalkan.");
                 Sleep(2000);
-            } else {
-                // penyambungan pointer inp
-                if (prev_del_inp == NULL) { // node yang dihapus adalah node pertama
-                    (*first).inp = pdel->p_input;
-                } else {
-                    prev_del_inp->p_input = pdel->p_input;
-                }
-                    
-                // penyambungan pointer prio
-                address_pasien trav2 = first->prio;
-                address_pasien prev_del_prio = NULL;
-                while (trav2 != pdel) {
-                    prev_del_prio = trav2;
-                    trav2 = trav2->p_prioritas;
-                }
-
-                if (prev_del_prio == NULL) { // node yang dihapus adalah node pertama
-                    (*first).prio = trav2->p_prioritas;
-                } else {
-                    prev_del_prio->p_prioritas = trav2->p_prioritas;
-                }
-
-                free(pdel);
-                kursor(kolom, ++baris);
-                printf("Data berhasil di hapus.");
-                Sleep(2000);
             }
+            // penyambungan pointer inp
+            if (prev_del_inp == NULL) { // node yang dihapus adalah node pertama
+                (*first).inp = pdel->p_input;
+            } else {
+                prev_del_inp->p_input = pdel->p_input;
+            }
+                
+            // penyambungan pointer prio
+            address_pasien trav2 = first->prio;
+            address_pasien prev_del_prio = NULL;
+            while (trav2 != pdel) {
+                prev_del_prio = trav2;
+                trav2 = trav2->p_prioritas;
+            }
+
+            if (prev_del_prio == NULL) { // node yang dihapus adalah node pertama
+                (*first).prio = trav2->p_prioritas;
+                kursor(kolom, ++baris);
+                printf("Data berhasil dihapus.");
+            } else {
+                prev_del_prio->p_prioritas = trav2->p_prioritas;
+                kursor(kolom, ++baris);
+                printf("Data berhasil dihapus.");
+            }
+
+            free(pdel);
+            Sleep(2000);
         }
     }
 }
@@ -204,7 +207,7 @@ void panggil_antrean_pasien(address_pasien *first_prio)
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     baris=10;
-    if ((*first_prio)->p_prioritas== NULL) {
+    if ((*first_prio) == NULL) {
         (*first_prio) = NULL;
         system("cls");
         banner();
@@ -236,9 +239,10 @@ void panggil_antrean_pasien(address_pasien *first_prio)
             printf("Pasien dengan nama %s dari %s", (*first_prio)->nama,(*first_prio)->alamat);
             kursor(kolom, ++baris);
             printf("Silakan memasuki ruangan pemeriksaan");
-            (*first_prio) = (*first_prio)->p_prioritas ;
+            (*first_prio) = (*first_prio)->p_prioritas ;// pemindahan pointer
         }
-    }  
+    }
+    baris++;
     kursor(kolom, ++baris);
     printf("Tekan apa pun untuk kembali.");
     getchar();

@@ -19,26 +19,32 @@ void set_bobot_master(bobot_krit *a_bobot)
 void ubah_bobot_master(bobot_krit *a_bobot)
 {   
     bobot_krit temp_bobot=(*a_bobot);
-    
-    // Algoritma
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    short columns;
+    short kolom=0;
+    short baris=0;
+  
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    columns = (short) (csbi.srWindow.Right - csbi.srWindow.Left + 1);
     system("cls");
     banner();
-    printf("\n\n\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("Masukkan angka 0 untuk membatalkan pengubahan\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("Bobot Tekanan Darah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("1. Sangat Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("2. Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("3. Cukup\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("4. Rendah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("5. Sangat Rendah\n");
-    printf("\t\t\t\t\t\t\t");
+    kolom=(short) ((columns/2)-26);
+    baris=10;
+    kursor(kolom, ++baris);
+    printf("Masukkan angka 0 untuk membatalkan pengubahan");
+    kursor(kolom, ++baris);
+    printf("Bobot Tekanan Darah");
+    kursor(kolom, ++baris);
+    printf("1. Sangat Tinggi");
+    kursor(kolom, ++baris);
+    printf("2. Tinggi");
+    kursor(kolom, ++baris);
+    printf("3. Cukup");
+    kursor(kolom, ++baris);
+    printf("4. Rendah");
+    kursor(kolom, ++baris);
+    printf("5. Sangat Rendah");
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_td));
     if ((*a_bobot).bobot_td == 0) {
@@ -47,19 +53,20 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     }
     (*a_bobot).bobot_td = 6 - (*a_bobot).bobot_td;
 
-    printf("\t\t\t\t\t\t\t");
-    printf("Bobot Detak Nadi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("1. Sangat Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("2. Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("3. Cukup\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("4. Rendah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("5. Sangat Rendah\n");
-    printf("\t\t\t\t\t\t\t");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Bobot Detak Nadi");
+    kursor(kolom, ++baris);
+    printf("1. Sangat Tinggi");
+    kursor(kolom, ++baris);
+    printf("2. Tinggi");
+    kursor(kolom, ++baris);
+    printf("3. Cukup");
+    kursor(kolom, ++baris);
+    printf("4. Rendah");
+    kursor(kolom, ++baris);
+    printf("5. Sangat Rendah");
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_nadi));
     if ((*a_bobot).bobot_nadi == 0) {
@@ -68,19 +75,20 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     }
     (*a_bobot).bobot_nadi = 6 - (*a_bobot).bobot_nadi;
 
-    printf("\t\t\t\t\t\t\t");
-    printf("Bobot Detak Jantung\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("1. Sangat Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("2. Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("3. Cukup\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("4. Rendah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("5. Sangat Rendah\n");
-    printf("\t\t\t\t\t\t\t");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Bobot Detak Jantung");
+    kursor(kolom, ++baris);
+    printf("1. Sangat Tinggi");
+    kursor(kolom, ++baris);
+    printf("2. Tinggi");
+    kursor(kolom, ++baris);
+    printf("3. Cukup");
+    kursor(kolom, ++baris);
+    printf("4. Rendah");
+    kursor(kolom, ++baris);
+    printf("5. Sangat Rendah");
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_hr));
     if ((*a_bobot).bobot_hr == 0) {
@@ -89,19 +97,20 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     }
     (*a_bobot).bobot_hr = 6 - (*a_bobot).bobot_hr;
 
-    printf("\t\t\t\t\t\t\t");
-    printf("Bobot Frekuensi Napas\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("1. Sangat Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("2. Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("3. Cukup\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("4. Rendah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("5. Sangat Rendah\n");
-    printf("\t\t\t\t\t\t\t");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Bobot Frekuensi Napas");
+    kursor(kolom, ++baris);
+    printf("1. Sangat Tinggi");
+    kursor(kolom, ++baris);
+    printf("2. Tinggi");
+    kursor(kolom, ++baris);
+    printf("3. Cukup");
+    kursor(kolom, ++baris);
+    printf("4. Rendah");
+    kursor(kolom, ++baris);
+    printf("5. Sangat Rendah");
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_napas));
     if ((*a_bobot).bobot_napas == 0) {
@@ -110,19 +119,20 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     }
     (*a_bobot).bobot_napas = 6 - (*a_bobot).bobot_napas;
 
-    printf("\t\t\t\t\t\t\t");
-    printf("Bobot Suhu Badan\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("1. Sangat Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("2. Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("3. Cukup\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("4. Rendah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("5. Sangat Rendah\n");
-    printf("\t\t\t\t\t\t\t");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Bobot Suhu Badan");
+    kursor(kolom, ++baris);
+    printf("1. Sangat Tinggi");
+    kursor(kolom, ++baris);
+    printf("2. Tinggi");
+    kursor(kolom, ++baris);
+    printf("3. Cukup");
+    kursor(kolom, ++baris);
+    printf("4. Rendah");
+    kursor(kolom, ++baris);
+    printf("5. Sangat Rendah");
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_suhu));
     if ((*a_bobot).bobot_suhu == 0) {
@@ -131,19 +141,20 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     }
     (*a_bobot).bobot_suhu = 6 - (*a_bobot).bobot_suhu;
 
-    printf("\t\t\t\t\t\t\t");
-    printf("Bobot Tegangan Nadi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("1. Sangat Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("2. Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("3. Cukup\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("4. Rendah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("5. Sangat Rendah\n");
-    printf("\t\t\t\t\t\t\t");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Bobot Tegangan Nadi");
+    kursor(kolom, ++baris);
+    printf("1. Sangat Tinggi");
+    kursor(kolom, ++baris);
+    printf("2. Tinggi");
+    kursor(kolom, ++baris);
+    printf("3. Cukup");
+    kursor(kolom, ++baris);
+    printf("4. Rendah");
+    kursor(kolom, ++baris);
+    printf("5. Sangat Rendah");
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_tegang_nadi));
     if ((*a_bobot).bobot_tegang_nadi == 0) {
@@ -152,19 +163,20 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     }
     (*a_bobot).bobot_tegang_nadi = 6 - (*a_bobot).bobot_tegang_nadi;
 
-    printf("\t\t\t\t\t\t\t");
-    printf("Bobot Korelasi Detak Nadi dan Jantung \n");
-    printf("\t\t\t\t\t\t\t");
-    printf("1. Sangat Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("2. Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("3. Cukup\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("4. Rendah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("5. Sangat Rendah\n");
-    printf("\t\t\t\t\t\t\t");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Bobot Korelasi Detak Nadi dan Jantung ");
+    kursor(kolom, ++baris);
+    printf("1. Sangat Tinggi");
+    kursor(kolom, ++baris);
+    printf("2. Tinggi");
+    kursor(kolom, ++baris);
+    printf("3. Cukup");
+    kursor(kolom, ++baris);
+    printf("4. Rendah");
+    kursor(kolom, ++baris);
+    printf("5. Sangat Rendah");
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_n_hr));
     if ((*a_bobot).bobot_n_hr == 0) {
@@ -173,19 +185,20 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     }
     (*a_bobot).bobot_n_hr = 6 - (*a_bobot).bobot_n_hr;
 
-    printf("\t\t\t\t\t\t\t");
-    printf("Bobot Elastisitas Nadi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("1. Sangat Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("2. Tinggi\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("3. Cukup\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("4. Rendah\n");
-    printf("\t\t\t\t\t\t\t");
-    printf("5. Sangat Rendah\n");
-    printf("\t\t\t\t\t\t\t");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Bobot Elastisitas Nadi");
+    kursor(kolom, ++baris);
+    printf("1. Sangat Tinggi");
+    kursor(kolom, ++baris);
+    printf("2. Tinggi");
+    kursor(kolom, ++baris);
+    printf("3. Cukup");
+    kursor(kolom, ++baris);
+    printf("4. Rendah");
+    kursor(kolom, ++baris);
+    printf("5. Sangat Rendah");
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
     scanf("%f", &((*a_bobot).bobot_elastis_nadi));
     if ((*a_bobot).bobot_elastis_nadi == 0) {
