@@ -1,7 +1,6 @@
 #include "pasien.h"
 
 void tampil_panduan() {
-    int jmlh_pasien = 0;
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     short columns;
     short kolom=0;
@@ -11,6 +10,8 @@ void tampil_panduan() {
     columns = (short) (csbi.srWindow.Right - csbi.srWindow.Left + 1);
     baris=10;
     kolom=(short) ((columns/2)-40);
+    system("cls");
+    banner();
     kursor(kolom, ++baris);
     printf("Panduan Penggunaan Aplikasi");
     kursor(kolom, ++baris);
@@ -108,29 +109,65 @@ void tampil_panduan() {
 }
 
 void tampil_kredit() {
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    short columns;
+    short kolom=0;
+    short baris=0;
+  
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    columns = (short) (csbi.srWindow.Right - csbi.srWindow.Left + 1);
+    baris=10;
+    kolom=(short) ((columns/2)-35);
+    system("cls");
+    banner();
+    kursor(kolom, ++baris);
     printf("Aplikasi Sistem Antrian Pasien dengan Metode Weight Product");
+    kursor(kolom, ++baris);
     printf("Versi 1.0");
 
+    kursor(kolom, ++baris);
     printf("Dikembangkan oleh:");
-    printf("Suryo Adi WibowoYosep Agus Pranoto");
+    kursor(kolom, ++baris);
+    printf("Muhammad Rafif Genadratama (231524016)");
+    kursor(kolom, ++baris);
+    printf("Nadia Rachma Yuninda       (231524017)");
 
+    baris++;
+    kursor(kolom, ++baris);
     printf("Politeknik Negeri BandungJurusan Teknik InformatikaTahun 2023");
+    kursor(kolom, ++baris);
     printf("Kontributor:");
-    printf("Ade Hodijah, S.Kom, M.T.");
+    kursor(kolom, ++baris);
+    printf("Ade Hodijah, S.Kom, M.T. (Dosen Pembimbing)");
+    kursor(kolom, ++baris);
     printf("Luqmannul Hakim Firdaus, S.Kom., M.T. (Dosen Pembimbing)");
-    printf("Andika Prisilia");
-    printf("Nadia Rachma Yuninda");
 
+    baris++;
+    kursor(kolom, ++baris);
     printf("Sumber Daya yang Digunakan:");
+    kursor(kolom, ++baris);
     printf("Visual Studio Code");
+    kursor(kolom, ++baris);
     printf("G++/GCC Compiler");
 
+    baris++;
+    kursor(kolom, ++baris);
     printf("Informasi Kontak:");
+    kursor(kolom, ++baris);
     printf("muhammad.rafif.tif423@polban.ac.id");
+    kursor(kolom, ++baris);
     printf("nadia.rachma.tif423@polban.ac.id");
 
-    printf("Kami mengucapkan terima kasih kepada seluruh staf dan dosen Jurusan Teknik Informatika ITN Malang atas bimbingan dan dukungannya dalam pengembangan aplikasi ini.");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Kami mengucapkan terima kasih kepada seluruh staf dan dosen");
+    kursor(kolom, ++baris);
+    printf("Jurusan Teknik Informatika Politeknik Negeri Bandung atas bimbingan dan");
+    kursor(kolom, ++baris);
+    printf("dukungannya dalam pengembangan aplikasi ini.");
 
+    baris++;
+    kursor(kolom, ++baris);
     printf("Tekan apapun untuk kembali.");
     getchar();
 }
