@@ -15,7 +15,7 @@ void tampilkan_antrian(Pasien *first)
         printf("\t\t\t\t\t\t\t");
         printf("Antrian pasien\n");
         while (trav != NULL)
-        {   
+        {
             jmlh_pasien++;
             printf("\t\t\t\t\t\t\t");
             printf("%d. %s dengan nilai vektor %.4f\n", jmlh_pasien, (*trav).nama, (*trav).vektor_total);

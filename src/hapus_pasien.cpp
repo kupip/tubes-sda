@@ -109,7 +109,9 @@ void hapus_data_pasien(Head *first)
 
 void panggil_antrean_pasien(address_pasien *first_prio)
 {
-    if ((*first_prio)->p_prioritas== NULL){
+    int temp;
+
+    if ((*first_prio)->p_prioritas== NULL) {
         (*first_prio) = NULL;
         system("cls");
         banner();
@@ -121,16 +123,18 @@ void panggil_antrean_pasien(address_pasien *first_prio)
         banner();
         printf("\n\n\n");
         printf("\t\t\t\t\t\t\t");
-        printf("Anda yakin akan memanggil pasien dengan nama %s dari %s?(Y/N) ", (*first_prio)->nama, (*first_prio)->alamat);
-        int temp = getchar();
-        if (temp == 110 || temp == 121) {
-            temp -= 11;
+        printf("Anda yakin akan memanggil pasien dengan nama %s dari %s?\n", (*first_prio)->nama, (*first_prio)->alamat);
+        printf("1. Ya\n");
+        printf("\t\t\t\t\t\t\t");
+        printf("2. Tidak\n");
+        printf("\t\t\t\t\t\t\t");
+        printf("Masukkan input: ");
+        scanf("%d", &temp);
+        while (temp != 1 && temp != 2) {
+            printf("Masukkan input yang valid (1/2): ");
+            scanf("%d", &temp);
         }
-        while (temp != 89 && temp != 78) {
-            printf("Masukkan input yang valid: ");
-            temp = getchar();
-        }
-        if (temp == 89) {
+        if (temp == 1) {
             printf("\t\t\t\t\t\t\t");
             printf("Pasien dengan nama %s dari %s\n", (*first_prio)->nama,(*first_prio)->alamat);
             printf("Silakan memasuki ruangan pemeriksaan\n");

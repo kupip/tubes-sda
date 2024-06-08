@@ -24,7 +24,7 @@ void ubah_bobot_master(bobot_krit *a_bobot)
     banner();
     printf("\n\n\n");
     printf("\t\t\t\t\t\t\t");
-    printf("Masukkan angka 0 untuk membatalkan pengubahan");
+    printf("Masukkan angka 0 untuk membatalkan pengubahan\n");
     printf("\t\t\t\t\t\t\t");
     printf("Bobot Tekanan Darah\n");
     printf("\t\t\t\t\t\t\t");
