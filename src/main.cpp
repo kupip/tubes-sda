@@ -38,7 +38,7 @@ int main() {
                 panggil_antrean_pasien(&(a_head.prio));
                 break;
             case 5:
-                hapus_pasien (&(a_head));
+                hapus_pasien(&(a_head));
                 break;
             case 6:
                 ubah_bobot_master(&sebuah_bobot);

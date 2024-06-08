@@ -1,6 +1,5 @@
 #include "pasien.h"
 
-
 void hapus_pasien(Head *first)
 {
     if ((*first).prio == NULL ){
@@ -8,11 +7,12 @@ void hapus_pasien(Head *first)
         printf("Belum terdapat data pasien");
     } else {
         int menu=0;
-        while (menu != 1 ) {
+        while (menu != 3) {
             system("cls");
             printf("Menu hapus\n");
             printf("1. Hapus data pasien dari daftar\n");
             printf("2. Hapus data semua pasien\n");
+            printf("3. Batal\n");
             printf("Masukkan angka: ");
             scanf("%d", &menu);
             switch (menu) {
@@ -21,6 +21,8 @@ void hapus_pasien(Head *first)
                     break;
                 case 2:
                     hapus_data_semua_pasien(&(*first));
+                    break;
+                case 3:
                     break;
                 default:
                     printf("Masukkan input yang valid.");
@@ -110,14 +112,30 @@ void panggil_antrean_pasien(address_pasien *first_prio)
     if ((*first_prio)->p_prioritas== NULL){
         (*first_prio) = NULL;
         system("cls");
+        banner();
+        printf("\n\n\n");
         printf("\t\t\t\t\t\t\t");
         printf("Tidak ada pasien yang tersisa");
     } else {
         system("cls");
+        banner();
+        printf("\n\n\n");
         printf("\t\t\t\t\t\t\t");
-        printf("Pasien dengan nama %s dari %s\n", (*first_prio)->nama,(*first_prio)->alamat);
-        printf("Silahkan memasuki ruangan pemeriksaan\n");
-        (*first_prio) = (*first_prio)->p_prioritas ;
+        printf("Anda yakin akan memanggil pasien dengan nama %s dari %s?(Y/N) ", (*first_prio)->nama, (*first_prio)->alamat);
+        int temp = getchar();
+        if (temp == 110 || temp == 121) {
+            temp -= 11;
+        }
+        while (temp != 89 && temp != 78) {
+            printf("Masukkan input yang valid: ");
+            temp = getchar();
+        }
+        if (temp == 89) {
+            printf("\t\t\t\t\t\t\t");
+            printf("Pasien dengan nama %s dari %s\n", (*first_prio)->nama,(*first_prio)->alamat);
+            printf("Silakan memasuki ruangan pemeriksaan\n");
+            (*first_prio) = (*first_prio)->p_prioritas ;
+        }
     }  
     printf("\t\t\t\t\t\t\t");
     printf("Tekan apa pun untuk kembali.\n");
