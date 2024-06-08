@@ -13,36 +13,28 @@
 
 void tampilkan_daftar_pasien(Pasien *first)
 {
-    address_pasien trav=first;
-    int jml_pasien=0;
+    address_pasien trav = first;
+    int jml_pasien = 0;
 
     system("cls");
-    if (first == NULL){
-        printf("belum terdapat data dalam daftar pasien\n");
+    kursor(30, 2);
+    printf("DAFTAR DATA PASIEN");
+
+    if (first == NULL) {
+        kursor(10, 5);
+        printf("Belum terdapat data dalam daftar pasien");
     } else {
-        printf("DAFTAR DATA PASIEN\n");
-        while (trav != NULL)
-        {
-            /* code */
+        kursor(5, 5);
+        printf("No. Nama                  Alamat                Jenis Kelamin TD Sistole TD Diastole Detak Nadi Detak Jantung Frek. Napas Suhu Badan Elastisitas Tegangan Nadi");
+        kursor(5, 6);
+        printf("--- ---------------------- ---------------------- ------------- ---------- ------------ ---------- ------------- ----------- ---------- ----------- ------------");
+
+        int baris = 7;
+        while (trav != NULL) {
             jml_pasien++;
-            printf("data pasien ke-%d\n", jml_pasien);
-            printf("Nama: %s \n", (*trav).nama);
-            printf("Alamat: %s\n", (*trav).alamat);
-            printf("Jenis kelamin: %c\n", (*trav).jenis_kelamin);
-            printf("TD sistolik         : %d      TD diastolik : %d\n", (*trav).krit.td_sistole, (*trav).krit.td_diastole);
-            printf("Detak nadi          : %d      Detak jantung:%d\n",(*trav).krit.detak_nadi, (*trav).krit.detak_jantung);
-            printf("Frekuensi pernapasan: %d      Suhu badan: %.1f\n", (*trav).krit.frek_napas, (*trav).krit.suhu_badan);
-            if((*trav).krit.elastisitas_pembuluh_nadi == ELASTIS){
-                printf("Elastisitas pembuluh nadi: elastis\n");
-            } else {
-                printf("Elastisitas pembuluh nadi: keras seperti kawat\n");
-            }
-            if((*trav).krit.tegangan_nadi == TIDAK_BERUBAH){
-                printf("Tegangan nadi: tidak berubah-ubah\n");
-            } else {
-                printf("Tegangan nadi: kuat dan lemah berubah-ubah\n");
-            }
-            printf("\n");
+            kursor(5, (short) baris);
+            printf("%2d. %-21s %-21s %c             %3d        %3d         %3d        %3d          %3d        %4.1f   %-11s %-15s", jml_pasien, (*trav).nama, (*trav).alamat, (*trav).jenis_kelamin, (*trav).krit.td_sistole, (*trav).krit.td_diastole, (*trav).krit.detak_nadi, (*trav).krit.detak_jantung, (*trav).krit.frek_napas, (*trav).krit.suhu_badan, ((*trav).krit.elastisitas_pembuluh_nadi == ELASTIS) ? "elastis" : "keras", ((*trav).krit.tegangan_nadi == TIDAK_BERUBAH) ? "tidak berubah" : "berubah-ubah");
+            baris++;
             trav = (*trav).p_input;
         }
     }
