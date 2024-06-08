@@ -124,6 +124,7 @@ void panggil_antrean_pasien(address_pasien *first_prio)
         printf("\n\n\n");
         printf("\t\t\t\t\t\t\t");
         printf("Anda yakin akan memanggil pasien dengan nama %s dari %s?\n", (*first_prio)->nama, (*first_prio)->alamat);
+        printf("\t\t\t\t\t\t\t");
         printf("1. Ya\n");
         printf("\t\t\t\t\t\t\t");
         printf("2. Tidak\n");
