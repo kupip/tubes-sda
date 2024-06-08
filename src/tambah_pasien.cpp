@@ -1,38 +1,54 @@
 #include "pasien.h"
-void input_kriteria(Pasien *temp_pasien);
+void input_kriteria(Pasien *temp_pasien, short baris, short kolom);
 void sambung_prio(address_pasien *prio, address_pasien* trav, address_pasien temp_pasien);
 
 void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot)
 {
     Pasien *temp_pasien = (Pasien*) malloc(sizeof(Pasien));
     static int id=0;
-
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    short columns;
+    short kolom=0;
+    short baris=0;
+  
     // Pengisian nilai awal ke pointer
     temp_pasien->p_input=NULL;
     temp_pasien->p_prioritas=NULL;
     (*temp_pasien).id = ++id;
 
+    // Penyesuaian layout
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    columns = (short) (csbi.srWindow.Right - csbi.srWindow.Left + 1);
     system("cls");
-    printf("\t\t\t\t\t\t\tMasukkan nama pasien: ");
+    kolom=(short) ((columns/2)-30);
+    baris=10;
+
+    banner();
+    kursor(kolom, ++baris);
+    printf("Masukkan nama pasien: ");
     scanf("%[^\n]s", (*temp_pasien).nama);
     getchar();
 
-    printf("\t\t\t\t\t\t\tMasukkan alamat: ");
+    kursor(kolom, ++baris);
+    printf("Masukkan alamat: ");
     scanf("%[^\n]s", (*temp_pasien).alamat);
     getchar();
 
-    printf("\t\t\t\t\t\t\tMasukkan jenis kelamin (L/P): ");
+    kursor(kolom, ++baris);
+    printf("Masukkan jenis kelamin (L/P): ");
     scanf("%c", &((*temp_pasien).jenis_kelamin));
     getchar();
     strupr(&((*temp_pasien).jenis_kelamin));
     
     // antisipasi input error
     while ((*temp_pasien).jenis_kelamin != 'L' && (*temp_pasien).jenis_kelamin != 'P' ) {
-        printf("\t\t\t\t\t\t\tMasukkan input yang sesuai (L/P): ");
+        kursor(kolom, ++baris);
+        printf("Masukkan input yang sesuai (L/P): ");
         scanf("%c", &((*temp_pasien).jenis_kelamin));
+        strupr(&((*temp_pasien).jenis_kelamin));
         getchar();
     }
-    input_kriteria(&(*temp_pasien));
+    input_kriteria(&(*temp_pasien), baris, kolom);
     hitung_vektor(&temp_pasien, a_bobot);
     
     // penyambungan berdasarkan urutan input
@@ -50,38 +66,52 @@ void tambah_pasien(Head *first, Pasien **trav, bobot_krit a_bobot)
     sambung_prio(&((*first).prio), &(*trav), temp_pasien);
 }
 
-void input_kriteria(Pasien *temp_pasien)
+void input_kriteria(Pasien *temp_pasien, short baris, short kolom)
 {
     // Kamus Data
     int temp=0;
 
     // Algoritma
-    printf("\t\t\t\t\t\t\tMasukkan tekanan darah sistole: ");
+    kursor(kolom, ++baris);
+    printf("Masukkan tekanan darah sistole: ");
     scanf("%d", &((*temp_pasien).krit.td_sistole));
 
-    printf("\t\t\t\t\t\t\tMasukkan tekanan darah diastole: ");
+    kursor(kolom, ++baris);
+    printf("Masukkan tekanan darah diastole: ");
     scanf("%d", &((*temp_pasien).krit.td_diastole));
 
-    printf("\t\t\t\t\t\t\tMasukkan detak nadi: ");
+    kursor(kolom, ++baris);
+    printf("Masukkan detak nadi: ");
     scanf("%d", &((*temp_pasien).krit.detak_nadi));
 
-    printf("\t\t\t\t\t\t\tMasukkan detak jantung: ");
+    kursor(kolom, ++baris);
+    printf("Masukkan detak jantung: ");
     scanf("%d", &((*temp_pasien).krit.detak_jantung));
 
     (*temp_pasien).krit.hr_x_nadi = (*temp_pasien).krit.detak_jantung - (*temp_pasien).krit.detak_nadi;
     
-    printf("\t\t\t\t\t\t\tMasukkan frekuensi pernapasan: ");
+    kursor(kolom, ++baris);
+    printf("Masukkan frekuensi pernapasan: ");
     scanf("%d", &((*temp_pasien).krit.frek_napas));
 
-    printf("\t\t\t\t\t\t\tMasukkan suhu tubuh: ");
+    kursor(kolom, ++baris);
+    printf("Masukkan suhu tubuh: ");
     scanf("%f", &((*temp_pasien).krit.suhu_badan));
 
-    printf("\t\t\t\t\t\t\tTegangan nadi\n\t\t\t\t\t\t\t1. Tidak Berubah\n\t\t\t\t\t\t\t2. Kuat dan Lemah Berubah-ubah\n\t\t\t\t\t\t\tMasukkan angka: ");
+    kursor(kolom, ++baris);
+    printf("Tegangan nadi");
+    kursor(kolom, ++baris);
+    printf("1. Tidak Berubah");
+    kursor(kolom, ++baris);
+    printf("2. Kuat dan Lemah Berubah-ubah");
+    kursor(kolom, ++baris);
+    printf("Masukkan angka: ");
     scanf("%d", &temp);
 
     // antisipasi input error
     while (temp != 1 && temp != 2) {
-        printf("\t\t\t\t\t\t\tMasukkan input yang valid: ");
+        kursor(kolom, ++baris);
+        printf("Masukkan input yang valid: ");
         scanf("%d", &temp);
     }
     if (temp == 1) {
@@ -90,12 +120,21 @@ void input_kriteria(Pasien *temp_pasien)
         (*temp_pasien).krit.tegangan_nadi = BERUBAH;
     }
 
-    printf("\n\t\t\t\t\t\t\tElastisitas pembuluh nadi\n\t\t\t\t\t\t\t1. Elastis\n\t\t\t\t\t\t\t2. Keras seperti kawat\n\t\t\t\t\t\t\tMasukkan angka: ");
+    baris++;
+    kursor(kolom, ++baris);
+    printf("Elastisitas pembuluh nadi");
+    kursor(kolom, ++baris);
+    printf("1. Elastis");
+    kursor(kolom, ++baris);
+    printf("2. Keras seperti kawat");
+    kursor(kolom, ++baris);
+    printf("Masukkan angka: ");
     scanf("%d", &temp);
 
     // antisipasi input error
     while (temp != 1 && temp != 2) {
-        printf("\t\t\t\t\t\t\tMasukkan input yang valid: ");
+        kursor(kolom, ++baris);
+        printf("Masukkan input yang valid: ");
         scanf("%d", &temp);
     }
 

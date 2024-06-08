@@ -24,5 +24,4 @@ void banner()
     center_text("|  |  \\    /  \\       /(_{;}_)         \\       /    (_I_)   (_{;}_)|   | \\ (_ o _) /|  |    |  | |   |   \\       /   |        \\", (unsigned) columns);
     printf("\n");
     center_text("''-'   `'-'    `-...-'  (_,_)           `'-..-'     '---'   '(_,_) '---'  '.(_,_).' '--'    '--' '---'    `'-..-'    `--------`", (unsigned) columns);
-    printf("\n\n\n\n\n");
 }

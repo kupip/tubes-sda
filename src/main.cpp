@@ -68,6 +68,7 @@ void print_menu_utama()
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     
+    printf("\n");
     center_text("\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB", (unsigned) columns);
     printf("\n");
     center_text("\xBA 1. Tambah Pasien                   \xBA", (unsigned) columns);
@@ -89,9 +90,8 @@ void print_menu_utama()
     center_text("\xBA 9. Quit                            \xBA", (unsigned) columns);
     printf("\n");
     center_text("\xC8\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBC", (unsigned) columns);
-    printf("\n");
-    center_text("Masukkan input: ", (unsigned) columns);
-    printf("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b");
+    kursor((short) ((columns/2)-16), 21);
+    printf("Masukkan angka: ");
 }
 
 void center_text(const char *text, unsigned int field_width) {
