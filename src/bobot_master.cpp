@@ -19,6 +19,7 @@ void set_bobot_master(bobot_krit *a_bobot)
 void ubah_bobot_master(bobot_krit *a_bobot)
 {   
     bobot_krit temp_bobot=(*a_bobot);
+    
     // Algoritma
     system("cls");
     banner();

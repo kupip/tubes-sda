@@ -81,7 +81,7 @@ void tampilkan_antrian(Pasien *first)
             trav = (*trav).p_prioritas;
         }
         kursor(kolom, ++baris);
-        printf("Tekan apa pun untuk kembali");
+        printf("Tekan apa pun untuk kembali.");
         getchar();
     }
 }

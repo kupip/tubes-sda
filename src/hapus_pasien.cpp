@@ -24,13 +24,13 @@ void hapus_pasien(Head *first)
             system("cls");
             banner();
             kursor(kolom, ++baris);
-            printf("Menu hapus\n");
+            printf("Menu hapus");
             kursor(kolom, ++baris);
-            printf("1. Hapus data pasien dari daftar\n");
+            printf("1. Hapus data pasien dari daftar");
             kursor(kolom, ++baris);
-            printf("2. Hapus data semua pasien\n");
+            printf("2. Hapus data semua pasien");
             kursor(kolom, ++baris);
-            printf("3. Keluar\n");
+            printf("3. Keluar");
             kursor(kolom, ++baris);
             printf("Masukkan angka: ");
             scanf("%d", &menu);
@@ -57,7 +57,7 @@ void hapus_pasien(Head *first)
                         hapus_data_semua_pasien(&(*first));
                     } else {
                         kursor(kolom, ++baris);
-                        printf("Penghapusan dibatalkan");
+                        printf("Penghapusan dibatalkan.");
                         Sleep(2000);
                     }
                     break;
@@ -143,7 +143,7 @@ void hapus_data_pasien(Head *first)
 
         if (count == 0) {
             kursor(kolom, ++baris);
-            printf("Penghapusan dibatalkan");
+            printf("Penghapusan dibatalkan.");
             Sleep(2000);
         } else {
             // hapus sesuai daftar input
@@ -198,44 +198,48 @@ void panggil_antrean_pasien(address_pasien *first_prio)
     int temp;
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     int columns;
+    short baris=0;
+    short kolom=0;
   
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+    baris=10;
     if ((*first_prio)->p_prioritas== NULL) {
         (*first_prio) = NULL;
         system("cls");
         banner();
-        printf("\n\n\n");
-        center_text("Tidak ada pasien yang tersisa", (unsigned) columns);
+        kolom=(short) ((columns/2)-15);
+        kursor(kolom, ++baris);
+        printf("Tidak ada pasien yang tersisa.");
     } else {
         system("cls");
         banner();
-        printf("\n\n\n");
-        printf("\t\t\t\t\t\t\t");
-        printf("Anda yakin akan memanggil pasien dengan nama %s dari %s?\n", (*first_prio)->nama, (*first_prio)->alamat);
-        printf("\t\t\t\t\t\t\t");
-        printf("1. Ya\n");
-        printf("\t\t\t\t\t\t\t");
-        printf("2. Tidak\n");
-        printf("\t\t\t\t\t\t\t");
+        kolom=(short) ((columns/2)-30);
+        kursor(kolom, ++baris);
+        printf("Anda yakin akan memanggil pasien dengan nama %s dari %s?", (*first_prio)->nama, (*first_prio)->alamat);
+        kursor(kolom, ++baris);
+        printf("1. Ya");
+        kursor(kolom, ++baris);
+        printf("2. Tidak");
+        kursor(kolom, ++baris);
         printf("Masukkan input: ");
         scanf("%d", &temp);
         getchar();
         while (temp != 1 && temp != 2) {
-            printf("\t\t\t\t\t\t\t");
-            printf("Masukkan input yang valid (1/2): ");
+            kursor(kolom, ++baris);
+            printf("Masukkan input yang valid: ");
             scanf("%d", &temp);
             getchar();
         }
         if (temp == 1) {
-            printf("\t\t\t\t\t\t\t");
-            printf("Pasien dengan nama %s dari %s\n", (*first_prio)->nama,(*first_prio)->alamat);
-            printf("\t\t\t\t\t\t\t");
-            printf("Silakan memasuki ruangan pemeriksaan\n");
+            kursor(kolom, ++baris);
+            printf("Pasien dengan nama %s dari %s", (*first_prio)->nama,(*first_prio)->alamat);
+            kursor(kolom, ++baris);
+            printf("Silakan memasuki ruangan pemeriksaan");
             (*first_prio) = (*first_prio)->p_prioritas ;
         }
     }  
-    printf("\t\t\t\t\t\t\t");
+    kursor(kolom, ++baris);
     printf("Tekan apa pun untuk kembali.");
     getchar();
 }
@@ -243,13 +247,20 @@ void panggil_antrean_pasien(address_pasien *first_prio)
 void hapus_data_semua_pasien(Head *first)
 {
 	address_pasien pdel = (*first).prio;
-	
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int columns;
+  
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     (*first).inp = NULL;
 	while ((*first).prio != NULL){
         (*first).prio = (*first).prio->p_input;
         free(pdel);
         pdel = (*first).prio;
     }
-    printf("Data semua pasien berhasil dihapus");
-    Sleep(3000);
+    system("cls");
+    banner();
+    kursor((short) ((columns/2)-18), 12);
+    printf("Data semua pasien berhasil dihapus.");
+    Sleep(2000);
 }
