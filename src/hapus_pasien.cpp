@@ -12,7 +12,7 @@ void hapus_pasien(Head *first)
             printf("Menu hapus\n");
             printf("1. Hapus data pasien dari daftar\n");
             printf("2. Hapus data semua pasien\n");
-            printf("3. Batal\n");
+            printf("3. Keluar\n");
             printf("Masukkan angka: ");
             scanf("%d", &menu);
             switch (menu) {
@@ -168,4 +168,6 @@ void hapus_data_semua_pasien(Head *first)
         free(pdel);
         pdel = (*first).prio;
     }
+    printf("Data semua pasien berhasil dihapus");
+    Sleep(3000);
 }
