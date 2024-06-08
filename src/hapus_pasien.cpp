@@ -62,62 +62,69 @@ void hapus_data_pasien(Head *first)
         // menanyakan urutan data pasien yang ingin dihapus
         int count;
         // urutan pasien dalam daftar
-        printf("Masukkan angka: ");
+        printf("Masukkan angka (nol untuk batal): ");
         scanf("%d", &count);
 
-        // hapus sesuai daftar input
-        address_pasien prev_del_inp = NULL;
- 	    i = 0;
-        while (pdel != NULL &&  i != (count-1)) {
-            prev_del_inp = pdel;
-            pdel = pdel->p_input;
-            i++;
-        }
-
-        // countnya ga sesuai
-        if (pdel == NULL) {
-            printf("\nTidak terdapat data pada angka yang anda masukkan.");
-        }
-
-        // penyambungan pointer inp
-        if (prev_del_inp == NULL) { // node yang dihapus adalah node pertama
-            (*first).inp = pdel->p_input;
+        if (count == 0) {
+            printf("Penghapusan dibatalkan");
+            Sleep(2000);
         } else {
-             prev_del_inp->p_input = pdel->p_input;
-        }
-            
-        // penyambungan pointer prio
-        address_pasien trav2 = first->prio;
-        address_pasien prev_del_prio = NULL;
-        while (trav2 != pdel) {
-            prev_del_prio = trav2;
-            trav2 = trav2->p_prioritas;
-        }
+            // hapus sesuai daftar input
+            address_pasien prev_del_inp = NULL;
+            i = 0;
+            while (pdel != NULL &&  i != (count-1)) {
+                prev_del_inp = pdel;
+                pdel = pdel->p_input;
+                i++;
+            }
 
-        if (prev_del_prio == NULL) { // node yang dihapus adalah node pertama
-            (*first).prio = trav2->p_prioritas;
-        } else {
-            prev_del_prio->p_prioritas = trav2->p_prioritas;
+            // countnya ga sesuai
+            if (pdel == NULL) {
+                printf("\nTidak terdapat data pada angka yang anda masukkan.");
+            }
+
+            // penyambungan pointer inp
+            if (prev_del_inp == NULL) { // node yang dihapus adalah node pertama
+                (*first).inp = pdel->p_input;
+            } else {
+                prev_del_inp->p_input = pdel->p_input;
+            }
+                
+            // penyambungan pointer prio
+            address_pasien trav2 = first->prio;
+            address_pasien prev_del_prio = NULL;
+            while (trav2 != pdel) {
+                prev_del_prio = trav2;
+                trav2 = trav2->p_prioritas;
+            }
+
+            if (prev_del_prio == NULL) { // node yang dihapus adalah node pertama
+                (*first).prio = trav2->p_prioritas;
+            } else {
+                prev_del_prio->p_prioritas = trav2->p_prioritas;
+            }
+
+            free(pdel);
+            printf("data berhasil di hapus\n");
+            Sleep(2000);
         }
-               
-        pdel->p_prioritas = NULL;
-        pdel->p_input= NULL;
-          }
-        free(pdel);
-        printf("data berhasil di hapus\n");
+    }
 }
 
 void panggil_antrean_pasien(address_pasien *first_prio)
 {
     int temp;
-
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    int columns;
+  
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
     if ((*first_prio)->p_prioritas== NULL) {
         (*first_prio) = NULL;
         system("cls");
         banner();
         printf("\n\n\n");
-        printf("\t\t\t\t\t\t\t");
-        printf("Tidak ada pasien yang tersisa");
+        center_text("Tidak ada pasien yang tersisa", (unsigned) columns);
     } else {
         system("cls");
         banner();
@@ -131,19 +138,23 @@ void panggil_antrean_pasien(address_pasien *first_prio)
         printf("\t\t\t\t\t\t\t");
         printf("Masukkan input: ");
         scanf("%d", &temp);
+        getchar();
         while (temp != 1 && temp != 2) {
+            printf("\t\t\t\t\t\t\t");
             printf("Masukkan input yang valid (1/2): ");
             scanf("%d", &temp);
+            getchar();
         }
         if (temp == 1) {
             printf("\t\t\t\t\t\t\t");
             printf("Pasien dengan nama %s dari %s\n", (*first_prio)->nama,(*first_prio)->alamat);
+            printf("\t\t\t\t\t\t\t");
             printf("Silakan memasuki ruangan pemeriksaan\n");
             (*first_prio) = (*first_prio)->p_prioritas ;
         }
     }  
     printf("\t\t\t\t\t\t\t");
-    printf("Tekan apa pun untuk kembali.\n");
+    printf("Tekan apa pun untuk kembali.");
     getchar();
 }
 
