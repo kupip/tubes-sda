@@ -14,7 +14,9 @@ void simpan_file(address_pasien trav) {
             trav = (*trav).p_input;
         }
     } else {
-        printf("Tidak ada data apapun.\n");
+        system("cls");
+        kursor(45, 15);
+        printf("Tidak ada data apa pun untuk disimpan.");
         Sleep(3000);
     }
     fclose(tulis);
@@ -31,7 +33,8 @@ void baca_file(Head *a_head) {
     // Algoritma
     if ((*a_head).inp == NULL) {
         (*a_head).inp = (address_pasien) malloc(sizeof(Pasien));
-        if (fscanf(baca, "%d,%[^,],%[^,],%c,%f,", &((*a_head).inp->id), (*a_head).inp->nama, (*a_head).inp->alamat, &((*a_head).inp->jenis_kelamin), &((*a_head).inp->vektor_total)) != EOF) {
+        if (fscanf(baca, "%d,%[^,],%[^,],%c,%f,", &((*a_head).inp->id), (*a_head).inp->nama, (*a_head).inp->alamat,
+        &((*a_head).inp->jenis_kelamin), &((*a_head).inp->vektor_total)) != EOF) {
             fscanf(baca, "%d,%d,%d,%d,%d,%f,%c,%d,%c,%d\n", &((*a_head).inp->krit.td_sistole), &((*a_head).inp->krit.td_diastole),
             &((*a_head).inp->krit.detak_nadi), &((*a_head).inp->krit.detak_jantung), &((*a_head).inp->krit.frek_napas), &((*a_head).inp->krit.suhu_badan),
             &(temp_tegang), &((*a_head).inp->krit.hr_x_nadi), &(temp_elastis), &(a_head->inp->jam_datang));
@@ -46,7 +49,8 @@ void baca_file(Head *a_head) {
             trav_inp = (*a_head).inp;
             if (!feof(baca)) {
                 trav_inp->p_input = (address_pasien) malloc(sizeof(Pasien));
-                while (fscanf(baca, "%d,%[^,],%[^,],%c,%f,", &(trav_inp->p_input->id), trav_inp->p_input->nama, trav_inp->p_input->alamat, &(trav_inp->p_input->jenis_kelamin), &(trav_inp->p_input->vektor_total)) != EOF) {
+                while (fscanf(baca, "%d,%[^,],%[^,],%c,%f,", &(trav_inp->p_input->id), trav_inp->p_input->nama, trav_inp->p_input->alamat,
+                &(trav_inp->p_input->jenis_kelamin), &(trav_inp->p_input->vektor_total)) != EOF) {
                     fscanf(baca, "%d,%d,%d,%d,%d,%f,%c,%d,%c,%d\n", &(trav_inp->p_input->krit.td_sistole), &(trav_inp->p_input->krit.td_diastole),
                     &(trav_inp->p_input->krit.detak_nadi), &(trav_inp->p_input->krit.detak_jantung), &(trav_inp->p_input->krit.frek_napas),
                     &(trav_inp->p_input->krit.suhu_badan), &(temp_tegang), &(trav_inp->p_input->krit.hr_x_nadi), &(temp_elastis), &(trav_inp->p_input->jam_datang));
@@ -84,7 +88,9 @@ void baca_file(Head *a_head) {
                 trav_inp->p_input = NULL;
             }
         } else {
-            printf("File kosong.\n");
+            kursor(50, 15);
+            printf("File kosong.");
+            Sleep(2000);
             free((*a_head).inp);
             (*a_head).inp = NULL;
         }

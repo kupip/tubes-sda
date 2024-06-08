@@ -15,7 +15,7 @@ void hapus_pasien(Head *first)
         system("cls");
         banner();
         kursor(kolom, 11);
-        printf("Belum terdapat data pasien");
+        printf("Belum terdapat data pasien.");
     } else {
         int menu=0;
         while (menu != 3) {

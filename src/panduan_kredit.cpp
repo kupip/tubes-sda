@@ -104,7 +104,7 @@ void tampil_panduan() {
     
     baris++;
     kursor(kolom, ++baris);
-    printf("Tekan apapun untuk kembali");
+    printf("Tekan apapun untuk kembali.");
     getchar();
 }
 
