@@ -64,4 +64,7 @@ void tampil_kredit() {
     printf("nadia.rachma.tif423@polban.ac.id\n\n");
 
     printf("Kami mengucapkan terima kasih kepada seluruh staf dan dosen Jurusan Teknik Informatika ITN Malang atas bimbingan dan dukungannya dalam pengembangan aplikasi ini.");
+
+    printf("Tekan apapun untuk kembali.\n");
+    getchar();
 }
