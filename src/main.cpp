@@ -1,8 +1,5 @@
 #include "pasien.h"
 
-void print_menu_utama();
-void center_text(const char *text, unsigned int field_width);
-
 int main() {
     // Kamus Data
     Head a_head;
@@ -38,7 +35,7 @@ int main() {
                 panggil_antrean_pasien(&(a_head.prio));
                 break;
             case 5:
-                hapus_pasien(&(a_head));
+                tampil_menu_hapus_pasien(&(a_head));
                 break;
             case 6:
                 ubah_bobot_master(&sebuah_bobot);
@@ -64,37 +61,35 @@ void print_menu_utama()
 {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     int columns;
+    short kolom, baris;
   
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
     columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+    kolom = (short) ((columns/2)-19);
+    baris=10;
     
-    printf("\n");
-    center_text("\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 1. Tambah Pasien                   \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 2. Tampil Daftar Pasien            \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 3. Tampil Antrean Pasien           \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 4. Proses antrean (panggil pasien) \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 5. Hapus Pasien                    \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 6. Ubah Bobot Master               \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 7. Panduan                         \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 8. Kredit                          \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xBA 9. Quit                            \xBA", (unsigned) columns);
-    printf("\n");
-    center_text("\xC8\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBC", (unsigned) columns);
-    kursor((short) ((columns/2)-16), 21);
+    kursor(kolom, ++baris);
+    printf("\xC9\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBB");
+    kursor(kolom, ++baris);
+    printf("\xBA 1. Tambah Pasien                   \xBA");
+    kursor(kolom, ++baris);
+    printf("\xBA 2. Tampil Daftar Pasien            \xBA", (unsigned) columns);
+    kursor(kolom, ++baris);
+    printf("\xBA 3. Tampil Antrean Pasien           \xBA", (unsigned) columns);
+    kursor(kolom, ++baris);
+    printf("\xBA 4. Proses antrean (panggil pasien) \xBA", (unsigned) columns);
+    kursor(kolom, ++baris);
+    printf("\xBA 5. Hapus Pasien                    \xBA", (unsigned) columns);
+    kursor(kolom, ++baris);
+    printf("\xBA 6. Ubah Bobot Master               \xBA", (unsigned) columns);
+    kursor(kolom, ++baris);
+    printf("\xBA 7. Panduan                         \xBA", (unsigned) columns);
+    kursor(kolom, ++baris);
+    printf("\xBA 8. Kredit                          \xBA", (unsigned) columns);
+    kursor(kolom, ++baris);
+    printf("\xBA 9. Quit                            \xBA", (unsigned) columns);
+    kursor(kolom, ++baris);
+    printf("\xC8\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xCD\xBC", (unsigned) columns);
+    kursor(kolom, ++baris);
     printf("Masukkan angka: ");
 }
-
-void center_text(const char *text, unsigned int field_width) {
-    unsigned int pad_len = (field_width - strlen(text)) / 2;
-    printf("%*s%s%*s", pad_len, "", text, pad_len, "");
-} 

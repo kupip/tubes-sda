@@ -1,6 +1,6 @@
 #include "pasien.h"
 
-void hapus_pasien(Head *first)
+void tampil_menu_hapus_pasien(Head *first)
 {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     int columns;
